@@ -3,63 +3,91 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="/style.css">
-  <title>Download MouseEyes for Windows 11</title>
+  <title>Download – MouseEyes</title>
+
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 </head>
 
-<body>
-  <h1>Download MouseEyes for Windows 11</h1>
+<body class="page-download">
 
-  <p>
-    MouseEyes is a lightweight Windows utility that makes your mouse pointer
-    impossible to lose — especially on multi‑monitor setups.
-  </p>
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-left">
+      <img
+        src="/images/mouseeyes-logo.png"
+        alt="MouseEyes logo"
+        class="site-logo"
+      />
+      <h1 class="page-title">Download</h1>
+    </div>
 
-  <p>
-    The download below includes the <strong>full version</strong> of MouseEyes.
-    All features are enabled for everyone.
-  </p>
+    <nav class="header-nav" aria-label="Primary navigation">
+      <a href="/index.html">Home</a>
+      <a href="/download.html">Download</a>
+      <a href="/pricing.html">Pricing</a>
+      <a href="/licenses.html">License</a>
+      <a href="/support.html">Support</a>
+      <a href="/privacy.html">Privacy</a>
+    </nav>
+  </header>
 
-  <hr />
+  <!-- Progressive enhancement: highlight current page -->
+  <script>
+  (function () {
+    var path = window.location.pathname;
+    if (path === "/" || path === "") {
+      path = "/index.html";
+    }
 
-  <h2>Prerelease Version</h2>
+    var links = document.querySelectorAll(".header-nav a");
 
-  <h3>System Requirements</h3>
-  <ul>
-    <li><strong>Operating System:</strong> Windows 11</li>
-    <li><strong>Displays:</strong> Single or multiple monitors supported</li>
-    <li><strong>Internet:</strong> Not required for normal operation</li>
-  </ul>
+    links.forEach(function (link) {
+      if (link.getAttribute("href") === path) {
+        var strong = document.createElement("strong");
+        strong.textContent = link.textContent;
+        link.replaceWith(strong);
+      }
+    });
+  })();
+  </script>
 
-  <h3>Installation Notes</h3>
-  <ul>
-    <li>Run the installer and follow the on‑screen instructions</li>
-    <li>Windows may show a security prompt for new software — this is normal</li>
-    <li>MouseEyes runs entirely on your local system</li>
-  </ul>
+  <!-- Main Content -->
+  <main>
+    <p>
+      MouseEyes is available as a lightweight Windows download.
+      It installs quickly and runs locally on your system.
+    </p>
 
-  <hr />
+    <h2>Download MouseEyes</h2>
 
-  <h2>Download</h2>
+    <p>
+      <a href="/downloads/MouseEyesSetup.exe">
+        Download MouseEyes for Windows
+      </a>
+    </p>
 
-  <p>
-    <strong>MouseEyes Installer</strong><br />
-    Standard Windows installer including all built‑in profiles and tools.<br />
-    Profile Editor included.
-  </p>
+    <p>
+      The installer includes everything you need to get started.
+      No additional dependencies are required.
+    </p>
 
-  <p>
-    <!-- REPLACE THIS LINK WITH YOUR GITHUB RELEASE URL -->
-    <a href="https://github.com/YOUR-ORG/YOUR-REPO/releases/latest" target="_blank">
-      Download MouseEyes Installer
-    </a>
-  </p>
+    <h2>System Requirements</h2>
 
-  <hr />
+    <ul>
+      <li>Windows 10 or later</li>
+      <li>64‑bit system recommended</li>
+      <li>Minimal CPU and memory usage</li>
+    </ul>
 
-  <p>
-    <a href="/">Back to Home</a> |
-    <a href="licenses.html">License Information</a>
-  </p>
+    <p>
+      For licensing details, see the
+      <a href="/pricing.html">Pricing</a> page.
+    </p>
+  </main>
+
 </body>
 </html>
