@@ -39,6 +39,16 @@
   gap: 1rem;
 }
 
+/* Ensure nav links stay white in all states */
+.header-nav a,
+.header-nav a:link,
+.header-nav a:visited,
+.header-nav a:hover,
+.header-nav a:active {
+  color: #fff;
+  text-decoration: none;
+}
+
 /* Page Specific logic */
 .page-privacy .site-header {
   background-color: #000;
