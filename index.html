@@ -13,51 +13,49 @@
 <body class="page-home">
 
   <!-- Site Header -->
-  <header class="site-header">
-    <div class="header-left">
-      <img
-        src="/images/mouseeyes-logo.png"
-        alt="MouseEyes logo"
-        class="site-logo"
-      />
-      <h1 class="page-title">MouseEyes</h1>
-    </div>
+<header class="site-header">
+  <div class="header-left">
+    <img src="/images/mouseeyes-logo.png" alt="MouseEyes logo" class="site-logo">
+    <h1 class="page-title">Pricing & Licensing</h1>
+  </div>
 
-    <nav class="header-nav" aria-label="Primary">
-      <a href="/index.html">Home</a>
-      <a href="/download.html">Download</a>
-      <a href="/pricing.html">Pricing</a>
-      <a href="/licenses.html">License</a>
-      <a href="/support.html">Support</a>
-      <a href="/privacy.html">Privacy</a>
-    </nav>
+  <nav class="header-nav" aria-label="Primary navigation">
+    <a href="/index.html">Home</a>
+    <a href="/download.html">Download</a>
+    <a href="/pricing.html">Pricing</a>
+    <a href="/licenses.html">License</a>
+    <a href="/support.html">Support</a>
+    <a href="/privacy.html">Privacy</a>
+  </nav>
+</header>
 
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<script>
+(function () {
+  var path = window.location.pathname;
 
-  </header>
+  // Normalize root
+  if (path === "/" || path === "") {
+    path = "/index.html";
+  }
 
-  <!-- Progressive enhancement: highlight current page -->
-  <script>
-  (function () {
-    var path = window.location.pathname;
+  // If no .html, add it
+  if (!path.endsWith(".html")) {
+    path = path.replace(/\/$/, "") + ".html";
+  }
 
-    if (path === "/" || path === "") {
-      path = "/index.html";
+  var links = document.querySelectorAll(".header-nav a");
+
+  links.forEach(function (link) {
+    var href = link.getAttribute("href");
+
+    if (href === path) {
+      var strong = document.createElement("strong");
+      strong.textContent = link.textContent;
+      link.replaceWith(strong);
     }
-
-    var links = document.querySelectorAll(".header-nav a");
-
-    links.forEach(function (link) {
-      if (link.getAttribute("href") === path) {
-        var strong = document.createElement("strong");
-        strong.textContent = link.textContent;
-        link.replaceWith(strong);
-      }
-    });
-  })();
-  </script>
-
+  });
+})();
+</script>
   <!-- Main Page Content -->
   <main>
     <p>
