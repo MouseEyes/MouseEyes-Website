@@ -15,45 +15,50 @@
 <body class="page-download">
 
   <!-- Site Header -->
-  <header class="site-header">
-    <div class="header-left">
-      <img
-        src="/images/mouseeyes-logo.png"
-        alt="MouseEyes logo"
-        class="site-logo"
-      />
-      <h1 class="page-title">Download</h1>
-    </div>
+<header class="site-header">
+  <div class="header-left">
+    <img src="/images/mouseeyes-logo.png" alt="MouseEyes logo" class="site-logo">
+    <h1 class="page-title">Pricing & Licensing</h1>
+  </div>
 
-    <nav class="header-nav" aria-label="Primary navigation">
-      <a href="/index.html">Home</a>
-      <a href="/download.html">Download</a>
-      <a href="/pricing.html">Pricing</a>
-      <a href="/licenses.html">License</a>
-      <a href="/support.html">Support</a>
-      <a href="/privacy.html">Privacy</a>
-    </nav>
-  </header>
+  <nav class="header-nav" aria-label="Primary navigation">
+    <a href="/index.html">Home</a>
+    <a href="/download.html">Download</a>
+    <a href="/pricing.html">Pricing</a>
+    <a href="/licenses.html">License</a>
+    <a href="/support.html">Support</a>
+    <a href="/privacy.html">Privacy</a>
+  </nav>
+</header>
 
-  <!-- Progressive enhancement: highlight current page -->
-  <script>
-  (function () {
-    var path = window.location.pathname;
-    if (path === "/" || path === "") {
-      path = "/index.html";
+<script>
+(function () {
+  var path = window.location.pathname;
+
+  // Normalize root
+  if (path === "/" || path === "") {
+    path = "/index.html";
+  }
+
+  // If no .html, add it
+  if (!path.endsWith(".html")) {
+    path = path.replace(/\/$/, "") + ".html";
+  }
+
+  var links = document.querySelectorAll(".header-nav a");
+
+  links.forEach(function (link) {
+    var href = link.getAttribute("href");
+
+    if (href === path) {
+      var strong = document.createElement("strong");
+      strong.textContent = link.textContent;
+      link.replaceWith(strong);
     }
+  });
+})();
+</script>
 
-    var links = document.querySelectorAll(".header-nav a");
-
-    links.forEach(function (link) {
-      if (link.getAttribute("href") === path) {
-        var strong = document.createElement("strong");
-        strong.textContent = link.textContent;
-        link.replaceWith(strong);
-      }
-    });
-  })();
-  </script>
 
   <!-- Main Content -->
   <main>
