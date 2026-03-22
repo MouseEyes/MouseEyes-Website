@@ -1,4 +1,43 @@
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
+  background-color: #000;
+  color: #fff;
+
+  padding: 1.5rem 2rem;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.site-logo {
+  height: 48px;
+  width: auto;
+}
+
+.page-title {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.header-nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 1rem;
+}
+
+.header-nav a:hover {
+  text-decoration: underline;
+}
+
+.header-nav strong {
+  font-weight: bold;
+}
 /* Base typography for MouseEyes website */
 body {
   font-family: Arial, Calibri, "Segoe UI", system-ui, -apple-system, sans-serif;
