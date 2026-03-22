@@ -2,36 +2,75 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <link rel="stylesheet" href="/style.css">
-  <title>MouseEyes — Official Downloads</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MouseEyes</title>
+
+  <link rel="stylesheet" href="/style.css" />
 </head>
-  <body class="page-support">
-<body>
-  
+
+<body class="page-home">
+
+  <!-- Site Header -->
   <header class="site-header">
     <div class="header-left">
-      /images/mouseeyes-logo.png
-      <h1 class="page-title">Support</h1>
+      <img
+        src="/images/mouseeyes-logo.png"
+        alt="MouseEyes logo"
+        class="site-logo"
+      />
+      <h1 class="page-title">MouseEyes</h1>
     </div>
-  
+
     <nav class="header-nav" aria-label="Primary">
-      /index.htmlHome</a>
-      /download.htmlDownload</a>
-      /pricing.htmlPricing</a>
-      /licenses.htmlLicense</a>
-      /support.htmlSupport</a>
-      /privacy.htmlPrivacy</a>
+      <a href="/index.html">Home</a>
+      <a href="/download.html">Download</a>
+      <a href="/pricing.html">Pricing</a>
+      <a href="/licenses.html">License</a>
+      <a href="/support.html">Support</a>
+      <a href="/privacy.html">Privacy</a>
     </nav>
   </header>
 
-  <h1>MouseEyes — Official Downloads</h1>
-  <p>Download the latest MouseEyes installer and purchase licenses.</p>
+  <!-- Progressive enhancement: highlight current page -->
+  <script>
+  (function () {
+    var path = window.location.pathname;
 
-  <h2>Download</h2>
-  <p><a href="download.html">Go to the download page</a></p>
+    if (path === "/" || path === "") {
+      path = "/index.html";
+    }
 
-  <h2>Licensing</h2>
-  <p><a href="licenses.html">Purchase a license</a></p>
+    var links = document.querySelectorAll(".header-nav a");
+
+    links.forEach(function (link) {
+      if (link.getAttribute("href") === path) {
+        var strong = document.createElement("strong");
+        strong.textContent = link.textContent;
+        link.replaceWith(strong);
+      }
+    });
+  })();
+  </script>
+
+  <!-- Main Page Content -->
+  <main>
+    <p>
+      <strong>MouseEyes</strong> is a lightweight Windows utility that displays
+      animated eyes on your desktop that follow your mouse pointer across
+      multiple monitors — making your cursor instantly visible, even on large
+      or complex setups.
+    </p>
+
+    <p>
+      Designed for fun, accessibility, and productivity, MouseEyes runs quietly
+      in the background and stays out of your way until you need it.
+    </p>
+
+    <p>
+      <a href="/download.html">Download MouseEyes</a> |
+      <a href="/pricing.html">Pricing &amp; License Information</a>
+    </p>
+  </main>
+
 </body>
 </html>
