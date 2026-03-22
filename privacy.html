@@ -3,95 +3,99 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MouseEyes Privacy Statement</title>
+  <title>Privacy – MouseEyes</title>
 
-  <link rel="stylesheet" href="/style.css" />
+  /style.css
+
+  <!-- Favicons -->
+  /favicon-32x32.png
+  /favicon-16x16.png
 </head>
 
-<body>
-  <h1>Privacy Statement</h1>
+<body class="page-privacy">
 
-  <p><strong>Effective Date:</strong> March 6, 2026</p>
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-left">
+      /images/mouseeyes-logo.png
+      <h1 class="page-title">Privacy</h1>
+    </div>
 
-  <h2>Overview</h2>
-  <p>
-    MouseEyes respects your privacy. This Privacy Statement explains how
-    information is collected, used, and protected when you use this software.
-  </p>
+    <nav class="header-nav" aria-label="Primary navigation">
+      /index.htmlHome</a>
+      /download.htmlDownload</a>
+      /pricing.htmlPricing</a>
+      /licenses.htmlLicense</a>
+      /support.htmlSupport</a>
+      /privacy.htmlPrivacy</a>
+    </nav>
+  </header>
 
-  <h2>Information We Collect</h2>
-  <p>
-    We may collect limited contact information (such as an email address)
-    <strong>only if you voluntarily provide it</strong>, for example when signing
-    up for notifications or updates.
-  </p>
+  <!-- Progressive enhancement: highlight current page -->
+  <script>
+    (function () {
+      var path = window.location.pathname;
+      if (path === "/" || path === "") {
+        path = "/index.html";
+      }
 
-  <p>
-    No other personal data is collected, tracked, or monitored.
-  </p>
+      var links = document.querySelectorAll(".header-nav a");
 
-  <h2>How Information Is Used</h2>
-  <p>
-    Any information you provide is used <strong>solely</strong> for the following
-    purposes:
-  </p>
+      links.forEach(function (link) {
+        if (link.getAttribute("href") === path) {
+          var strong = document.createElement("strong");
+          strong.textContent = link.textContent;
+          link.replaceWith(strong);
+        }
+      });
+    })();
+  </script>
 
-  <ul>
-    <li>Announcing new software releases</li>
-    <li>Communicating important updates or changes</li>
-  </ul>
+  <!-- Main Content -->
+  <main>
+    <p>
+      MouseEyes is designed with privacy in mind.
+      The application runs locally on your system and does not
+      transmit personal data.
+    </p>
 
-  <p>
-    Your information will <strong>not</strong> be used for advertising, analytics,
-    profiling, or any unrelated purpose.
-  </p>
+    <h2>Data Collection</h2>
 
-  <h2>Data Sharing</h2>
-  <p>
-    We do <strong>not</strong> sell, rent, share, or disclose user data to third
-    parties under any circumstances.
-  </p>
+    <p>
+      MouseEyes does not collect, store, or transmit personal
+      information. No usage data, analytics, or telemetry are sent
+      to external servers.
+    </p>
 
-  <h2>Data Security</h2>
-  <p>
-    Reasonable measures are taken to protect any information you provide from
-    unauthorized access, alteration, or disclosure.
-  </p>
+    <h2>Local Operation</h2>
 
-  <h2>Data Retention</h2>
-  <p>
-    User information is retained only as long as necessary to provide update
-    notifications. You may request removal of your information at any time.
-  </p>
+    <p>
+      All functionality is performed locally on your computer.
+      Mouse position data is used only to animate the on‑screen
+      eyes and is not logged or shared.
+    </p>
 
-  <h2>Your Choices</h2>
-  <p>
-    You may opt out of communications or request deletion of your data at any
-    time by contacting the address below.
-  </p>
+    <h2>Third‑Party Services</h2>
 
-  <h2>Changes to This Privacy Statement</h2>
-  <p>
-    This Privacy Statement may be updated from time to time. Any changes will be
-    reflected by updating the effective date above.
-  </p>
+    <p>
+      MouseEyes does not integrate with third‑party analytics,
+      advertising networks, or tracking services.
+    </p>
 
-  <h2>Contact</h2>
-  <p>
-    If you have questions or concerns about this Privacy Statement, please
-    contact us:
-  </p>
+    <h2>Changes to This Policy</h2>
 
-  <p>
-    <a href="mailto:Admin@MouseEyes.com">Admin@MouseEyes.com</a>
-  </p>
+    <p>
+      This privacy policy may be updated as the software evolves.
+      Any changes will be reflected on this page.
+    </p>
 
-  <hr />
+    <p>
+      If you have questions about privacy or data handling,
+      please contact support via the
+      /support.htmlSupport</a>
+      page.
+    </p>
+  </main>
 
-  <p>
-    <a href="/">Home</a> |
-    <a href="/download.html">Download</a> |
-    <a href="/licenses.html">License</a>
-  </p>
 </body>
 </html>
