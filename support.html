@@ -15,96 +15,77 @@
 
 <body class="page-support">
 
-  <!-- Site Header -->
-  <header class="site-header">
-    <div class="header-left">
-      <img src="/images/mouseeyes-logo.png" alt="MouseEyes logo">
-      <h1 class="page-title">Support</h1>
-    </div>
+<header class="site-header">
+  <div class="header-left">
+    <img src="/images/mouseeyes-logo.png"
+         alt="MouseEyes"
+         class="site-logo">
+    <h1 class="page-title">Support</h1>
+  </div>
 
-    <nav class="header-nav" aria-label="Primary navigation">
-      <a href="/index.html">Home</a>
-      <a href="/download.html">Download</a>
-      <a href="/pricing.html">Pricing</a>
-      <a href="/licenses.html">License</a>
-      <a href="/support.html">Support</a>
-      <a href="/privacy.html">Privacy</a>
-    </nav>
-  </header>
+  <nav class="header-nav" aria-label="Primary navigation">
+    <a href="/index.html">Home</a>
+    <a href="/download.html">Download</a>
+    <a href="/pricing.html">Pricing</a>
+    <a href="/licenses.html">License</a>
+    <a href="/support.html">Support</a>
+    <a href="/privacy.html">Privacy</a>
+  </nav>
+</header>
 
-  <!-- Progressive enhancement: highlight current page -->
-  <script>
-  (function () {
-    var path = window.location.pathname;
+<!-- Progressive enhancement: highlight current page -->
+<script>
+(function () {
+  let path = window.location.pathname;
 
-    if (path === "/" || path === "") {
-      path = "/index.html";
+  if (path === "/" || path === "") path = "/index.html";
+  if (!path.endsWith(".html")) path = path.replace(/\/$/, "") + ".html";
+
+  document.querySelectorAll(".header-nav a").forEach(link => {
+    if (link.getAttribute("href") === path) {
+      const strong = document.createElement("strong");
+      strong.textContent = link.textContent;
+      link.replaceWith(strong);
     }
+  });
+})();
+</script>
 
-    if (!path.endsWith(".html")) {
-      path = path.replace(/\/$/, "") + ".html";
-    }
+<main>
+  <p>
+    This page provides help and support information for MouseEyes.
+    If you encounter issues or have questions, the information below
+    should point you in the right direction.
+  </p>
 
-    document.querySelectorAll(".header-nav a").forEach(function (link) {
-      if (link.getAttribute("href") === path) {
-        var strong = document.createElement("strong");
-        strong.textContent = link.textContent;
-        link.replaceWith(strong);
-      }
-    });
-  })();
-  </script>
+  <h2>Common Questions</h2>
+  <p>
+    Many common questions about installation, licensing, and usage
+    are covered on the
+    <a href="/pricing.html">Pricing</a>
+    and
+    <a href="/licenses.html">License</a>
+    pages.
+  </p>
 
-  <!-- Main Content -->
-  <main>
-    <p>
-      This page provides help and support information for MouseEyes.
-      If you encounter issues or have questions, the information below
-      should point you in the right direction.
-    </p>
+  <h2>Troubleshooting</h2>
+  <ul>
+    <li>Ensure you are running a supported version of Windows.</li>
+    <li>Verify that MouseEyes is not blocked by security software.</li>
+    <li>Try restarting the application if the eyes stop responding.</li>
+  </ul>
 
-    <h2>Common Questions</h2>
-
-    <p>
-      Many common questions about installation, licensing, and usage
-      are covered on the
-      <a href="/pricing.html">Pricing</a>
-      and
-      <a href="/licenses.html">License</a>
-      pages.
-    </p>
-
-    <h2>Troubleshooting</h2>
-
-    <ul>
-      <li>Ensure you are running a supported version of Windows.</li>
-      <li>Verify that MouseEyes is not blocked by security software.</li>
-      <li>Try restarting the application if the eyes stop responding.</li>
-    </ul>
-
-    <h2>Contact</h2>
-
-    <p>
-      If you still need assistance, you can contact support by email:
-    </p>
-
-    <p>
-      <strong>Email:</strong>
-      <a href="mailto:support@mouseeyes.example">
-        support@mouseeyes.example
-      </a>
-    </p>
-
-    <p>
-      Please include:
-    </p>
-
-    <ul>
-      <li>Your Windows version</li>
-      <li>Your MouseEyes version</li>
-      <li>A brief description of the issue</li>
-    </ul>
-  </main>
+  <h2>Contact</h2>
+  <p>
+    If you still need assistance, contact support by email:
+  </p>
+  <p>
+    <strong>Email:</strong>
+    <a href="mailto:support@mouseeyes.example">
+      support@mouseeyes.example
+    </a>
+  </p>
+</main>
 
 </body>
 </html>
