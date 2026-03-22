@@ -38,6 +38,22 @@
 .header-nav strong {
   font-weight: bold;
 }
+/* Page Specific logic */
+.page-privacy .site-header {
+  background-color: #000;
+  background-image:
+    url("/images/eye1.png"),
+    url("/images/eye2.png"),
+    url("/images/eye3.png"),
+    url("/images/eye4.png");
+  background-repeat: no-repeat;
+  background-position:
+    10% 30%,
+    30% 70%,
+    70% 25%,
+    85% 60%;
+}
+
 /* Base typography for MouseEyes website */
 body {
   font-family: Arial, Calibri, "Segoe UI", system-ui, -apple-system, sans-serif;
