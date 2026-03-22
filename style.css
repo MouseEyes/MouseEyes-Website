@@ -38,6 +38,13 @@
 .header-nav strong {
   font-weight: bold;
 }
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 /* Page Specific logic */
 .page-privacy .site-header {
   background-color: #000;
