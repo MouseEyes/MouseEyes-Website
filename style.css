@@ -54,6 +54,13 @@
   text-decoration: none;
 }
 
+.header-nav a {
+  opacity: 0.85;
+}
+
+.header-nav strong {
+  opacity: 1;
+}
 /* Page Specific logic */
 .page-privacy .site-header {
   background-color: #000;
