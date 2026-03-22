@@ -1,0 +1,9 @@
+
+/* Base typography for MouseEyes website */
+body {
+  font-family: Arial, Calibri, "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #000;
+  margin: 2rem;
+}
