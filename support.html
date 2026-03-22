@@ -1,74 +1,110 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MouseEyes Support</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Support – MouseEyes</title>
 
-  <link rel="stylesheet" href="/style.css" />
+  <!-- Styles -->
+  <link rel="stylesheet" href="/style.css">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 </head>
 
-<body>
-  <h1>MouseEyes Support</h1>
+<body class="page-support">
 
-  <p>
-    MouseEyes is designed to be lightweight, simple, and easy to use.
-    If you need help, have a question, or want to report an issue, support is available.
-  </p>
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-left">
+      <img src="/images/mouseeyes-logo.png" alt="MouseEyes logo">
+      <h1 class="page-title">Support</h1>
+    </div>
 
-  <hr />
+    <nav class="header-nav" aria-label="Primary navigation">
+      <a href="/index.html">Home</a>
+      <a href="/download.html">Download</a>
+      <a href="/pricing.html">Pricing</a>
+      <a href="/licenses.html">License</a>
+      <a href="/support.html">Support</a>
+      <a href="/privacy.html">Privacy</a>
+    </nav>
+  </header>
 
-  <h2>Getting Help</h2>
+  <!-- Progressive enhancement: highlight current page -->
+  <script>
+  (function () {
+    var path = window.location.pathname;
 
-  <p>
-    The best way to get support is by email.
-  </p>
+    if (path === "/" || path === "") {
+      path = "/index.html";
+    }
 
-  <p>
-    <strong>Email:</strong>
-    <a href="mailto:Admin@MouseEyes.com">Admin@MouseEyes.com</a>
-  </p>
+    if (!path.endsWith(".html")) {
+      path = path.replace(/\/$/, "") + ".html";
+    }
 
-  <p>
-    Please include:
-  </p>
+    document.querySelectorAll(".header-nav a").forEach(function (link) {
+      if (link.getAttribute("href") === path) {
+        var strong = document.createElement("strong");
+        strong.textContent = link.textContent;
+        link.replaceWith(strong);
+      }
+    });
+  })();
+  </script>
 
-  <ul>
-    <li>A brief description of the issue or question</li>
-    <li>Your Windows version (Windows 11)</li>
-    <li>Any relevant details about your monitor setup</li>
-  </ul>
+  <!-- Main Content -->
+  <main>
+    <p>
+      This page provides help and support information for MouseEyes.
+      If you encounter issues or have questions, the information below
+      should point you in the right direction.
+    </p>
 
-  <hr />
+    <h2>Common Questions</h2>
 
-  <h2>Common Topics</h2>
+    <p>
+      Many common questions about installation, licensing, and usage
+      are covered on the
+      <a href="/pricing.html">Pricing</a>
+      and
+      <a href="/licenses.html">License</a>
+      pages.
+    </p>
 
-  <ul>
-    <li>Installation questions</li>
-    <li>Multi‑monitor behavior</li>
-    <li>Profile usage and customization</li>
-    <li>Off‑screen window recovery</li>
-    <li>Licensing questions</li>
-  </ul>
+    <h2>Troubleshooting</h2>
 
-  <hr />
+    <ul>
+      <li>Ensure you are running a supported version of Windows.</li>
+      <li>Verify that MouseEyes is not blocked by security software.</li>
+      <li>Try restarting the application if the eyes stop responding.</li>
+    </ul>
 
-  <h2>Response Time</h2>
+    <h2>Contact</h2>
 
-  <p>
-    Support requests are typically answered within a reasonable time.
-    MouseEyes is an independently developed project, and responses may not be immediate,
-    but all legitimate inquiries are read.
-  </p>
+    <p>
+      If you still need assistance, you can contact support by email:
+    </p>
 
-  <hr />
+    <p>
+      <strong>Email:</strong>
+      <a href="mailto:support@mouseeyes.example">
+        support@mouseeyes.example
+      </a>
+    </p>
 
-  <p>
-    <a href="/">Home</a> |
-    <a href="/download.html">Download</a> |
-    <a href="/pricing.html">Pricing</a> |
-    <a href="/licenses.html">License</a> |
-    <a href="/privacy.html">Privacy</a>
-  </p>
+    <p>
+      Please include:
+    </p>
+
+    <ul>
+      <li>Your Windows version</li>
+      <li>Your MouseEyes version</li>
+      <li>A brief description of the issue</li>
+    </ul>
+  </main>
+
 </body>
 </html>
