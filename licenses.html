@@ -5,51 +5,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>License – MouseEyes</title>
 
-  /style.css
+  <!-- Styles -->
+  <link rel="stylesheet" href="/style.css">
 
   <!-- Favicons -->
-  /favicon-32x32.png
-  /favicon-16x16.png
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 </head>
 
 <body class="page-licenses">
 
   <!-- Site Header -->
-  <header class="site-header">
-    <div class="header-left">
-      /images/mouseeyes-logo.png
-      <h1 class="page-title">License</h1>
-    </div>
+<header class="site-header">
+  <div class="header-left">
+    <img src="/images/mouseeyes-logo.png" alt="MouseEyes logo" class="site-logo">
+    <h1 class="page-title">Pricing & Licensing</h1>
+  </div>
 
-    <nav class="header-nav" aria-label="Primary navigation">
-      /index.htmlHome</a>
-      /download.htmlDownload</a>
-      /pricing.htmlPricing</a>
-      /licenses.htmlLicense</a>
-      /support.htmlSupport</a>
-      /privacy.htmlPrivacy</a>
-    </nav>
-  </header>
+  <nav class="header-nav" aria-label="Primary navigation">
+    <a href="/index.html">Home</a>
+    <a href="/download.html">Download</a>
+    <a href="/pricing.html">Pricing</a>
+    <a href="/licenses.html">License</a>
+    <a href="/support.html">Support</a>
+    <a href="/privacy.html">Privacy</a>
+  </nav>
+</header>
 
-  <!-- Progressive enhancement: highlight current page -->
-  <script>
-    (function () {
-      var path = window.location.pathname;
-      if (path === "/" || path === "") {
-        path = "/index.html";
-      }
+<script>
+(function () {
+  var path = window.location.pathname;
 
-      var links = document.querySelectorAll(".header-nav a");
+  // Normalize root
+  if (path === "/" || path === "") {
+    path = "/index.html";
+  }
 
-      links.forEach(function (link) {
-        if (link.getAttribute("href") === path) {
-          var strong = document.createElement("strong");
-          strong.textContent = link.textContent;
-          link.replaceWith(strong);
-        }
-      });
-    })();
-  </script>
+  // If no .html, add it
+  if (!path.endsWith(".html")) {
+    path = path.replace(/\/$/, "") + ".html";
+  }
+
+  var links = document.querySelectorAll(".header-nav a");
+
+  links.forEach(function (link) {
+    var href = link.getAttribute("href");
+
+    if (href === path) {
+      var strong = document.createElement("strong");
+      strong.textContent = link.textContent;
+      link.replaceWith(strong);
+    }
+  });
+})();
+</script>
+
 
   <!-- Main Content -->
   <main>
