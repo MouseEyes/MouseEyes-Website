@@ -39,6 +39,11 @@
   gap: 1rem;
 }
 
+.header-nav a,
+.header-nav strong {
+  font-weight: 600; /* or whatever “bold” weight you like */
+}
+
 /* Ensure nav links stay white in all states */
 .header-nav a,
 .header-nav a:link,
