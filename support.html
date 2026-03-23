@@ -1,91 +1,49 @@
+<!-- support.html -->
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Support – MouseEyes</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MouseEyes — Support</title>
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/style.css" />
 
-  <!-- Favicons -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="shortcut icon" href="/favicon-32x32.png" />
 </head>
 
 <body class="page-support">
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-left">
+      <img
+        src="/images/mouseeyes-logo.png"
+        alt="MouseEyes logo"
+        class="site-logo"
+      />
+      <h1 class="page-title">Support</h1>
+    </div>
 
-<header class="site-header">
-  <div class="header-left">
-    <img src="/images/mouseeyes-logo.png"
-         alt="MouseEyes"
-         class="site-logo">
-    <h1 class="page-title">Support</h1>
-  </div>
+    <nav class="header-nav" aria-label="Primary">
+      <a href="/index.html">Home</a>
+      <a href="/download.html">Download</a>
+      <a href="/pricing.html">Pricing</a>
+      <a href="/licenses.html">Licenses</a>
+      <strong>Support</strong>
+      <a href="/privacy.html">Privacy</a>
+    </nav>
+  </header>
 
-  <nav class="header-nav" aria-label="Primary navigation">
-    <a href="/index.html">Home</a>
-    <a href="/download.html">Download</a>
-    <a href="/pricing.html">Pricing</a>
-    <a href="/licenses.html">License</a>
-    <a href="/support.html">Support</a>
-    <a href="/privacy.html">Privacy</a>
-  </nav>
-</header>
+  <!-- Main Page Content -->
+  <main>
+    <h2>System Requirements</h2>
 
-<!-- Progressive enhancement: highlight current page -->
-<script>
-(function () {
-  let path = window.location.pathname;
+    <p><strong>Operating System:</strong> Windows 11<br />
+    <strong>Architecture:</strong> Windows desktop environment<br />
+    <strong>Displays:</strong> Single or multimonitor setups supported</p>
 
-  if (path === "/" || path === "") path = "/index.html";
-  if (!path.endsWith(".html")) path = path.replace(/\/$/, "") + ".html";
-
-  document.querySelectorAll(".header-nav a").forEach(link => {
-    if (link.getAttribute("href") === path) {
-      const strong = document.createElement("strong");
-      strong.textContent = link.textContent;
-      link.replaceWith(strong);
-    }
-  });
-})();
-</script>
-
-<main>
-  <p>
-    This page provides help and support information for MouseEyes.
-    If you encounter issues or have questions, the information below
-    should point you in the right direction.
-  </p>
-
-  <h2>Common Questions</h2>
-  <p>
-    Many common questions about installation, licensing, and usage
-    are covered on the
-    <a href="/pricing.html">Pricing</a>
-    and
-    <a href="/licenses.html">License</a>
-    pages.
-  </p>
-
-  <h2>Troubleshooting</h2>
-  <ul>
-    <li>Ensure you are running a supported version of Windows.</li>
-    <li>Verify that MouseEyes is not blocked by security software.</li>
-    <li>Try restarting the application if the eyes stop responding.</li>
-  </ul>
-
-  <h2>Contact</h2>
-  <p>
-    If you still need assistance, contact support by email:
-  </p>
-  <p>
-    <strong>Email:</strong>
-    <a href="mailto:support@mouseeyes.example">
-      support@mouseeyes.example
-    </a>
-  </p>
-</main>
-
+    <p>MouseEyes uses efficient Windows APIs and runs with minimal overhead.</p>
+  </main>
 </body>
 </html>
