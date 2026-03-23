@@ -1,11 +1,10 @@
+/* style.css */
 .site-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   background-color: #000;
   color: #fff;
-
   padding: 1.5rem 2rem;
 }
 
@@ -61,20 +60,43 @@
 .header-nav strong {
   opacity: 1;
 }
-/* Page Specific logic */
+
+/* --- Added: Active nav styling without layout shift (same border on all items) --- */
+.header-nav a,
+.header-nav strong {
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+
+.header-nav strong {
+  border-bottom-color: #fff;
+}
+
+/* Page Specific logic (Privacy header eyes using your required file path) */
 .page-privacy .site-header {
   background-color: #000;
   background-image:
-    url("/images/eye1.png"),
-    url("/images/eye2.png"),
-    url("/images/eye3.png"),
-    url("/images/eye4.png");
+    url("/images/mouseeyes-eye.png"),
+    url("/images/mouseeyes-eye.png"),
+    url("/images/mouseeyes-eye.png"),
+    url("/images/mouseeyes-eye.png"),
+    url("/images/mouseeyes-eye.png"),
+    url("/images/mouseeyes-eye.png");
   background-repeat: no-repeat;
   background-position:
     10% 30%,
-    30% 70%,
-    70% 25%,
-    85% 60%;
+    25% 70%,
+    45% 25%,
+    65% 60%,
+    80% 28%,
+    90% 65%;
+  background-size:
+    54px 54px,
+    42px 42px,
+    64px 64px,
+    48px 48px,
+    38px 38px,
+    58px 58px;
 }
 
 /* Base typography for MouseEyes website */
