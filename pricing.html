@@ -1,81 +1,94 @@
+<!-- pricing.html -->
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pricing & Licensing – MouseEyes</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MouseEyes — Pricing</title>
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/style.css" />
 
-  <!-- Favicons -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="shortcut icon" href="/favicon-32x32.png" />
 </head>
 
 <body class="page-pricing">
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-left">
+      <img
+        src="/images/mouseeyes-logo.png"
+        alt="MouseEyes logo"
+        class="site-logo"
+      />
+      <h1 class="page-title">Pricing</h1>
+    </div>
 
-<header class="site-header">
-  <div class="header-left">
-    <img src="/images/mouseeyes-logo.png" alt="MouseEyes logo" class="site-logo">
-    <h1 class="page-title">Pricing</h1>
-  </div>
+    <nav class="header-nav" aria-label="Primary">
+      <a href="/index.html">Home</a>
+      <a href="/download.html">Download</a>
+      <strong>Pricing</strong>
+      <a href="/licenses.html">Licenses</a>
+      <a href="/support.html">Support</a>
+      <a href="/privacy.html">Privacy</a>
+    </nav>
+  </header>
 
-  <nav class="header-nav" aria-label="Primary navigation">
-    <a href="/index.html">Home</a>
-    <a href="/download.html">Download</a>
-    <a href="/pricing.html">Pricing</a>
-    <a href="/licenses.html">License</a>
-    <a href="/support.html">Support</a>
-    <a href="/privacy.html">Privacy</a>
-  </nav>
-</header>
+  <!-- Main Page Content -->
+  <main>
+    <p>MouseEyes is fully functional for everyone to download and use.<br />
+    If you find it useful, you can support continued development by purchasing a license.</p>
 
-<script>
-(function () {
-  var path = window.location.pathname;
+    <h2>Choose the License That Works for You</h2>
 
-  // Normalize root
-  if (path === "/" || path === "") {
-    path = "/index.html";
-  }
+    <h3>Free</h3>
+    <p><strong>$0</strong></p>
+    <ul>
+      <li>Full MouseEyes functionality</li>
+      <li>All builtin profiles</li>
+      <li>Multimonitor support</li>
+      <li>Profile Editor</li>
+      <li>Offscreen window recovery</li>
+      <li>CPU &amp; Network monitoring</li>
+    </ul>
+    <p>✅ No time limits<br />
+    ✅ No feature restrictions<br />
+    ✅ No registration required</p>
 
-  // If no .html, add it
-  if (!path.endsWith(".html")) {
-    path = path.replace(/\/$/, "") + ".html";
-  }
+    <p><a href="/download.html"><strong>Download MouseEyes</strong></a></p>
 
-  var links = document.querySelectorAll(".header-nav a");
+    <h3>Yearly License></h3>
+    <p><strong>$5 per year</strong></p>
+    <p>Everything in the free version, plus:</p>
+    <ul>
+      <li>Continued support and updates during your license period</li>
+      <li>Helps fund ongoing development and improvements</li>
+    </ul>
+    <p>Best for users who want to support MouseEyes yeartoyear.</p>
+    <p><strong>[Buy Yearly License — $5]</strong></p>
+    <p><strong>Not available yet - Email </strong><a href="mailto:Admin@mouseeyes.com"><strong>Admin@MouseEyes.com</strong></a><strong> for a free license file!</strong></p>
 
-  links.forEach(function (link) {
-    var href = link.getAttribute("href");
+    <h3>Lifetime License</h3>
+    <p><strong>$20 onetime</strong></p>
+    <p>Everything included forever:</p>
+    <ul>
+      <li>Unlimited use</li>
+      <li>All future updates</li>
+      <li>No renewals, no subscriptions</li>
+    </ul>
+    <p>Best value for longterm users and power users.</p>
+    <p><strong>[Buy Lifetime License — $20]</strong></p>
+    <p><strong>Not available yet - Email </strong><a href="mailto:Admin@mouseeyes.com"><strong>Admin@MouseEyes.com</strong></a><strong> for a free license file!</strong></p>
 
-    if (href === path) {
-      var strong = document.createElement("strong");
-      strong.textContent = link.textContent;
-      link.replaceWith(strong);
-    }
-  });
-})();
-</script>
+    <h3>License Notes</h3>
+    <ul>
+      <li>MouseEyes runs entirely on your local Windows 11 system</li>
+      <li>No internet connection required for normal use</li>
+      <li>One license covers use on your personal Windows devices</li>
+    </ul>
 
-<main>
-  <p>
-    MouseEyes is offered under a simple, transparent licensing model.
-  </p>
-
-  <h2>Personal License</h2>
-  <ul>
-    <li>Free for personal, non‑commercial use</li>
-    <li>Use on personally owned computers</li>
-    <li>Updates within the same major version</li>
-  </ul>
-
-  <p>
-    For full terms, see the
-    <a href="/licenses.html">License</a> page.
-  </p>
-</main>
-
+    <p>Thank you for supporting MouseEyes!</p>
+  </main>
 </body>
 </html>
