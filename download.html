@@ -1,106 +1,68 @@
+<!-- download.html -->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Download – MouseEyes</title>
+  <title>MouseEyes — Download</title>
 
   <link rel="stylesheet" href="/style.css" />
 
-  <!-- Favicons -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="shortcut icon" href="/favicon-32x32.png" />
 </head>
 
 <body class="page-download">
-
   <!-- Site Header -->
-<header class="site-header">
-  <div class="header-left">
-    <img src="/images/mouseeyes-logo.png" alt="MouseEyes logo" class="site-logo">
-    <h1 class="page-title">Download</h1>
-  </div>
+  <header class="site-header">
+    <div class="header-left">
+      <img
+        src="/images/mouseeyes-logo.png"
+        alt="MouseEyes logo"
+        class="site-logo"
+      />
+      <h1 class="page-title">Download</h1>
+    </div>
 
-  <nav class="header-nav" aria-label="Primary navigation">
-    <a href="/index.html">Home</a>
-    <a href="/download.html">Download</a>
-    <a href="/pricing.html">Pricing</a>
-    <a href="/licenses.html">License</a>
-    <a href="/support.html">Support</a>
-    <a href="/privacy.html">Privacy</a>
-  </nav>
-</header>
+    <nav class="header-nav" aria-label="Primary">
+      <a href="/index.html">Home</a>
+      <strong>Download</strong>
+      <a href="/pricing.html">Pricing</a>
+      <a href="/licenses.html">Licenses</a>
+      <a href="/support.html">Support</a>
+      <a href="/privacy.html">Privacy</a>
+    </nav>
+  </header>
 
-<script>
-(function () {
-  var path = window.location.pathname;
-
-  // Normalize root
-  if (path === "/" || path === "") {
-    path = "/index.html";
-  }
-
-  // If no .html, add it
-  if (!path.endsWith(".html")) {
-    path = path.replace(/\/$/, "") + ".html";
-  }
-
-  var links = document.querySelectorAll(".header-nav a");
-
-  links.forEach(function (link) {
-    var href = link.getAttribute("href");
-
-    if (href === path) {
-      var strong = document.createElement("strong");
-      strong.textContent = link.textContent;
-      link.replaceWith(strong);
-    }
-  });
-})();
-</script>
-
-
-  <!-- Main Content -->
+  <!-- Main Page Content -->
   <main>
-    <p>
-      MouseEyes is available as a lightweight Windows download.
-      It installs quickly and runs locally on your system.
-    </p>
+    <h2>Download MouseEyes for Windows 11</h2>
 
-    <h2>Download MouseEyes</h2>
+    <p>MouseEyes is a lightweight Windows utility that makes your mouse pointer impossible to lose — especially on multimonitor setups.</p>
 
-    <p>
-      <a href="https://github.com/MouseEyes/MouseEyes-Downloads/releases/download/v2.2.45/MouseEyesInstaller_2.2.45_x64.exe">
-        Download MouseEyes for Windows
-      </a><br/>
-      
-      Platform: Windows x64<br/>
-      Size: 36 MB<br/>
-      <br/>
-      Note: Because this is a Windows installer, your browser may display a security warning.<br/>
-      This is expected. Choose “Keep” or “More info → Run anyway” to continue.<br/>
-      <br/>
-      If you have version 2.2.44 or older, I recommend uninstalling before you install this version. 
-    </p>
+    <p>The download below includes the <strong>full version</strong> of MouseEyes.<br />
+    All features are enabled for everyone.</p>
 
-    <p>
-      The installer includes everything you need to get started.
-      No additional dependencies are required.
-    </p>
+    <p>---- Prerelease Version ----</p>
 
-    <h2>System Requirements</h2>
+    <h3>System Requirements</h3>
+    <p><strong>Operating System:</strong> Windows 11<br />
+    <strong>Displays:</strong> Single or multiple monitors supported<br />
+    <strong>Internet:</strong> Not required for normal operation</p>
 
+    <h3>Installation Notes</h3>
     <ul>
-      <li>Windows 10 or later</li>
-      <li>64‑bit system recommended</li>
-      <li>Minimal CPU and memory usage</li>
+      <li>Run the installer and follow the onscreen instructions</li>
+      <li>Windows may show a security prompt for new software — this is normal</li>
+      <li>MouseEyes runs entirely on your local system</li>
     </ul>
 
-    <p>
-      For licensing details, see the
-      <a href="/pricing.html">Pricing</a> page.
-    </p>
+    <h3>Download Options</h3>
+    <h4>MouseEyes Installer</h4>
+    <p>Standard Windows installer<br />
+    Includes all builtin profiles and tools<br />
+    Profile Editor included</p>
   </main>
-
 </body>
 </html>
