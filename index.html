@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,271 +7,91 @@
   <title>MouseEyes</title>
 
   <link rel="stylesheet" href="/style.css" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="shortcut icon" href="/favicon-32x32.png" />
 </head>
 
 <body class="page-home">
-
   <!-- Site Header -->
-<header class="site-header">
-  <div class="header-left">
-    <img src="/images/mouseeyes-logo.png" alt="MouseEyes logo" class="site-logo">
-    <h1 class="page-title">Home</h1>
-  </div>
+  <header class="site-header">
+    <div class="header-left">
+      <img
+        src="/images/mouseeyes-logo.png"
+        alt="MouseEyes logo"
+        class="site-logo"
+      />
+      <h1 class="page-title">MouseEyes</h1>
+    </div>
 
-  <nav class="header-nav" aria-label="Primary navigation">
-    <a href="/index.html">Home</a>
-    <a href="/download.html">Download</a>
-    <a href="/pricing.html">Pricing</a>
-    <a href="/licenses.html">License</a>
-    <a href="/support.html">Support</a>
-    <a href="/privacy.html">Privacy</a>
-  </nav>
-</header>
+    <nav class="header-nav" aria-label="Primary">
+      <strong>Home</strong>
+      <a href="/download.html">Download</a>
+      <a href="/pricing.html">Pricing</a>
+      <a href="/licenses.html">Licenses</a>
+      <a href="/support.html">Support</a>
+      <a href="/privacy.html">Privacy</a>
+    </nav>
+  </header>
 
-<script>
-(function () {
-  var path = window.location.pathname;
-
-  // Normalize root
-  if (path === "/" || path === "") {
-    path = "/index.html";
-  }
-
-  // If no .html, add it
-  if (!path.endsWith(".html")) {
-    path = path.replace(/\/$/, "") + ".html";
-  }
-
-  var links = document.querySelectorAll(".header-nav a");
-
-  links.forEach(function (link) {
-    var href = link.getAttribute("href");
-
-    if (href === path) {
-      var strong = document.createElement("strong");
-      strong.textContent = link.textContent;
-      link.replaceWith(strong);
-    }
-  });
-})();
-</script>
   <!-- Main Page Content -->
   <main>
-    <div id="header">
-    <h1 class="title">MouseEyes</h1>
-    </div>
-    <h1 id="home-page">Home Page</h1>
-    <p><a
-    href="https://www.mouseeyes.com/home#h.g153u0m0ckj8">https://www.mouseeyes.com/home#h.g153u0m0ckj8</a></p>
-    <p><strong>Never Lose Your Mouse Again</strong></p>
-    <p><strong>MouseEyes</strong> is a lightweight Windows utility that
-    displays animated eyes on your Windows 11 desktop that follow your mouse
-    pointer across <strong>multiple monitors</strong> — making your cursor
-    instantly visible, even on large or complex setups.</p>
-    <p>Prelease version is available  <strong>[<a
-    href="https://www.mouseeyes.com/download">Download MouseEyes</a>]<br />
-    </strong> </p>
-    <p><strong>Value Proposition Section</strong></p>
-    <p><strong>Instantly See Where Your Mouse Is — On Any
-    Screen</strong></p>
-    <p>MouseEyes adds a playful but powerful visual overlay to your desktop.
-    The animated eyes track your cursor in real time, helping you locate it
-    instantly — even across multiple monitors, high‑resolution displays, or
-    cluttered desktops.</p>
-    <p>Designed for <strong>fun, accessibility, and productivity</strong>,
-    MouseEyes runs quietly in the background and stays out of your way until
-    you need it.</p>
-    <p><strong>Key Benefits Section</strong></p>
-    <p><strong>Why Use MouseEyes?</strong></p>
-    <p><strong>✔ Enhanced Mouse Visibility<br />
-    </strong>Instantly spot your cursor, even on large or high‑resolution
-    desktops.</p>
-    <p><strong>✔ True Multi‑Monitor Support<br />
-    </strong>MouseEyes tracks your mouse seamlessly across <strong>all
-    connected displays</strong>.</p>
-    <p><strong>✔ Fully Customizable Profiles<br />
-    </strong>Choose from built‑in profiles or design your own layouts,
-    graphics, and behaviors using the Profile Editor.<a
-    href="https://onedrive.live.com/personal/68781e8b9c054835/_layouts/15/doc.aspx?resid=f41aab10-f162-4313-8cfa-ea0a44ba3591&amp;cid=68781e8b9c054835"> </a></p>
-    <p><strong>✔ Lightweight &amp; Non‑Intrusive<br />
-    </strong>Runs efficiently in the background and can be toggled, resized,
-    or closed at any time.</p>
-    <p><strong>✔ Accessibility‑Friendly<br />
-    </strong>Helps users who have difficulty visually tracking the mouse
-    pointer or who frequently lose it.</p>
-    <p><strong>Highlight Feature Section</strong></p>
-    <p><strong>Recover Lost Windows Instantly</strong></p>
-    <p>MouseEyes includes a <strong>unique off‑screen window recovery
-    feature</strong>.</p>
-    <p>If an application window becomes lost outside your visible desktop
-    (common after monitor changes or remote desktop use), MouseEyes can
-    detect it and bring it back with a <strong>simple
-    double‑click</strong> using the <strong>MouseMap</strong> profile.</p>
+    <h2><strong>Never Lose Your Mouse Again</strong></h2>
+
+    <p><strong>MouseEyes</strong> is a lightweight Windows utility that displays animated eyes on your Windows 11 desktop that follow your mouse pointer across <strong>multiple monitors</strong> — making your cursor instantly visible, even on large or complex setups.</p>
+
+    <p>Prelease version is available <strong>[</strong><a href="/download.html"><strong>Download MouseEyes</strong></a><strong>]</strong></p>
+
+    <h3><strong>Value Proposition Section</strong></h3>
+
+    <h3><strong>Instantly See Where Your Mouse Is — On Any Screen</strong></h3>
+
+    <p>MouseEyes adds a playful but powerful visual overlay to your desktop. The animated eyes track your cursor in real time, helping you locate it instantly — even across multiple monitors, highresolution displays, or cluttered desktops.</p>
+
+    <p>Designed for <strong>fun, accessibility, and productivity</strong>, MouseEyes runs quietly in the background and stays out of your way until you need it.</p>
+
+    <h3><strong>Key Benefits Section</strong></h3>
+
+    <h3><strong>Why Use MouseEyes?</strong></h3>
+
+    <p><strong>✔ Enhanced Mouse Visibility</strong>Instantly spot your cursor, even on large or highresolution desktops.</p>
+    <p><strong>✔ True MultiMonitor Support</strong>MouseEyes tracks your mouse seamlessly across <strong>all connected displays</strong>.</p>
+    <p><strong>✔ Fully Customizable Profiles</strong>Choose from builtin profiles or design your own layouts, graphics, and behaviors using the Profile Editor.</p>
+    <p><strong>✔ Lightweight &amp; NonIntrusive</strong>Runs efficiently in the background and can be toggled, resized, or closed at any time.</p>
+    <p><strong>✔ AccessibilityFriendly</strong>Helps users who have difficulty visually tracking the mouse pointer or who frequently lose it.</p>
+
+    <h3><strong>Highlight Feature Section</strong></h3>
+
+    <h3><strong>Recover Lost Windows Instantly</strong></h3>
+
+    <p>MouseEyes includes a <strong>unique offscreen window recovery feature</strong>.</p>
+
+    <p>If an application window becomes lost outside your visible desktop (common after monitor changes or remote desktop use), MouseEyes can detect it and bring it back with a <strong>simple doubleclick</strong> using the <strong>MouseMap</strong> profile.</p>
+
     <p>No more guessing. No more resetting display settings.</p>
-    <p><strong>Profiles </strong></p>
-    <p><strong>Built‑In Profiles for Every Workflow</strong></p>
-    <p>MouseEyes ships with powerful built‑in profiles, including:</p>
+
+    <h3><strong>Profiles</strong></h3>
+
+    <h3><strong>BuiltIn Profiles for Every Workflow</strong></h3>
+
+    <p>MouseEyes ships with powerful builtin profiles, including:</p>
+
     <ul>
-    <li><p><strong>Two Eyes</strong> – Classic dual‑eye cursor
-    tracking</p></li>
-    <li><p><strong>Single Eye</strong> – Minimal, compact
-    visibility</p></li>
-    <li><p><strong>Pointer</strong> – Directional pointer instead of
-    eyes</p></li>
-    <li><p><strong>MouseMap</strong> – Real‑time monitor map with cursor
-    teleport and window recovery</p></li>
-    <li><p><strong>CPU &amp; Network</strong> – Live system resource
-    monitoring overlay</p></li>
+      <li><strong>Two Eyes</strong> – Classic dualeye cursor tracking</li>
+      <li><strong>Single Eye</strong> – Minimal, compact visibility</li>
+      <li><strong>Pointer</strong> – Directional pointer instead of eyes</li>
+      <li><strong>MouseMap</strong> – Realtime monitor map with cursor teleport and window recovery</li>
+      <li><strong>CPU &amp; Network</strong> – Live system resource monitoring overlay</li>
     </ul>
-    <p>All profiles can be switched instantly from the right‑click menu.</p>
+
+    <p>All profiles can be switched instantly from the rightclick menu.</p>
+
     <p><strong>See Your Mouse. Control Your Desktop.</strong></p>
-    <p>MouseEyes makes Windows 11 easier, faster, and more enjoyable to use
-    — especially on multi‑monitor systems.</p>
-    <p><strong>[<a href="https://www.mouseeyes.com/download">Download
-    MouseEyes for Windows 11</a>]<br />
-    [<a href="https://www.mouseeyes.com/pricing">Pricing &amp; License
-    Information</a>]</strong></p>
-    <h1 id="pricing-page">Pricing Page</h1>
-    <p>MouseEyes is fully functional for everyone to download and use.<br />
-    If you find it useful, you can support continued development by
-    purchasing a license.</p>
-    <p><strong>Choose the License That Works for You</strong></p>
-    <p><strong>Free</strong></p>
-    <p><strong>$0</strong></p>
-    <ul>
-    <li><p>Full MouseEyes functionality</p></li>
-    <li><p>All built‑in profiles</p></li>
-    <li><p>Multi‑monitor support</p></li>
-    <li><p>Profile Editor</p></li>
-    <li><p>Off‑screen window recovery</p></li>
-    <li><p>CPU &amp; Network monitoring</p></li>
-    </ul>
-    <p>✅ No time limits<br />
-    ✅ No feature restrictions<br />
-    ✅ No registration required</p>
-    <p><strong>[<a href="https://www.mouseeyes.com/download">Download
-    MouseEyes</a>]</strong></p>
-    <p><strong>Yearly License </strong></p>
-    <p><strong>$5 per year</strong></p>
-    <p>Everything in the free version, plus:</p>
-    <ul>
-    <li><p>Continued support and updates during your license period</p></li>
-    <li><p>Helps fund ongoing development and improvements</p></li>
-    </ul>
-    <p>Best for users who want to support MouseEyes year‑to‑year.</p>
-    <p><strong>[Buy Yearly License — $5]</strong></p>
-    <p><strong>Not available yet - Email <a
-    href="mailto:Admin@MouseEyes.com">Admin@MouseEyes.com</a> for a free
-    license file!</strong></p>
-    <p><strong>Lifetime License</strong></p>
-    <p><strong>$20 one‑time</strong></p>
-    <p>Everything included forever:</p>
-    <ul>
-    <li><p>Unlimited use</p></li>
-    <li><p>All future updates</p></li>
-    <li><p>No renewals, no subscriptions</p></li>
-    </ul>
-    <p>Best value for long‑term users and power users.</p>
-    <p><strong>[Buy Lifetime License — $20]</strong></p>
-    <p><strong>Not available yet - Email <a
-    href="mailto:Admin@MouseEyes.com">Admin@MouseEyes.com</a> for a free
-    license file!</strong></p>
-    <p><strong>License Notes</strong></p>
-    <ul>
-    <li><p>MouseEyes runs entirely on your local Windows 11 system</p></li>
-    <li><p>No internet connection required for normal use</p></li>
-    <li><p>One license covers use on your personal Windows devices</p></li>
-    </ul>
-    <p>Thank you for supporting MouseEyes!</p>
-    <h1 id="download-page">Download Page</h1>
-    <p><strong>Download MouseEyes for Windows 11</strong></p>
-    <p>MouseEyes is a lightweight Windows utility that makes your mouse
-    pointer impossible to lose — especially on multi‑monitor setups.</p>
-    <p>The download below includes the <strong>full version</strong> of
-    MouseEyes.<br />
-    All features are enabled for everyone.</p>
-    <p>---- Prerelease Version ----</p>
-    <p><strong>System Requirements</strong></p>
-    <ul>
-    <li><p><strong>Operating System:</strong> Windows 11</p></li>
-    <li><p><strong>Displays:</strong> Single or multiple monitors
-    supported</p></li>
-    <li><p><strong>Internet:</strong> Not required for normal
-    operation</p></li>
-    </ul>
-    <p><strong>Installation Notes</strong></p>
-    <ul>
-    <li><p>Run the installer and follow the on‑screen instructions</p></li>
-    <li><p>Windows may show a security prompt for new software — this is
-    normal</p></li>
-    <li><p>MouseEyes runs entirely on your local system</p></li>
-    </ul>
-    <p><strong>Download Options</strong></p>
-    <p><strong>MouseEyes Installer</strong></p>
-    <ul>
-    <li><p>Standard Windows installer</p></li>
-    <li><p>Includes all built‑in profiles and tools</p></li>
-    <li><p>Profile Editor included</p></li>
-    </ul>
-    <h1 id="support-page">Support Page</h1>
-    <p><strong>System Requirements</strong></p>
-    <ul>
-    <li><p><strong>Operating System:</strong> Windows 11</p></li>
-    <li><p><strong>Architecture:</strong> Windows desktop
-    environment</p></li>
-    <li><p><strong>Displays:</strong> Single or multi‑monitor setups
-    supported</p></li>
-    </ul>
-    <p>MouseEyes uses efficient Windows APIs and runs with minimal
-    overhead.</p>
-    <h1 id="privacy-statement">Privacy Statement</h1>
-    <p><strong>Privacy Statement</strong></p>
-    <p><strong>Effective Date:</strong> March 6, 2026</p>
-    <p><strong>Overview</strong></p>
-    <p>This software respects your privacy. This Privacy Statement explains
-    how information is collected, used, and protected when you use this
-    software.</p>
-    <p><strong>Information We Collect</strong></p>
-    <p>We may collect limited contact information (such as an email address)
-    <strong>only if you voluntarily provide it</strong>, for example when
-    signing up for notifications or updates.</p>
-    <p>No other personal data is collected, tracked, or monitored.</p>
-    <p><strong>How Information Is Used</strong></p>
-    <p>Any information you provide is used <strong>solely for the following
-    purposes</strong>:</p>
-    <ul>
-    <li><p>Announcing new software releases</p></li>
-    </ul>
-    <ul>
-    <li><p>Communicating important updates or changes</p></li>
-    </ul>
-    <p>Your information will <strong>not</strong> be used for advertising,
-    analytics, profiling, or any unrelated purpose.</p>
-    <p><strong>Data Sharing</strong></p>
-    <p>We do <strong>not</strong> sell, rent, share, or disclose user data
-    to third parties under any circumstances.</p>
-    <p><strong>Data Security</strong></p>
-    <p>Reasonable measures are taken to protect any information you provide
-    from unauthorized access, alteration, or disclosure.</p>
-    <p><strong>Data Retention</strong></p>
-    <p>User information is retained only as long as necessary to provide
-    update notifications. You may request removal of your information at any
-    time.</p>
-    <p><strong>Your Choices</strong></p>
-    <p>You may opt out of communications or request deletion of your data at
-    any time by contacting the address below.</p>
-    <p><strong>Changes to This Privacy Statement</strong></p>
-    <p>This Privacy Statement may be updated from time to time. Any changes
-    will be reflected by updating the effective date above.</p>
-    <p><strong>Contact</strong></p>
-    <p>If you have questions or concerns about this Privacy Statement,
-    please contact us.<br />
-    Email: <a href="mailto:Admin@MouseEyes.com">Admin@MouseEyes.com</a></p>
 
-    
+    <p>MouseEyes makes Windows 11 easier, faster, and more enjoyable to use — especially on multimonitor systems.</p>
+
+    <p><strong>[</strong><a href="/download.html"><strong>Download MouseEyes for Windows 11</strong></a><strong>][</strong><a href="/pricing.html"><strong>Pricing &amp; License Information</strong></a><strong>]</strong></p>
   </main>
-
 </body>
 </html>
