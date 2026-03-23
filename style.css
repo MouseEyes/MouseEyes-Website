@@ -11,19 +11,18 @@ body {
   font-size: 16px;
   line-height: 1.5;
   color: #000;
-  margin: 0; /* IMPORTANT: prevents header width drift */
+  margin: 0;
 }
 
 
 /* =========================================================
-   Shared Layout Width
+   Layout Container
    ========================================================= */
 
 .site-header,
 main {
   max-width: 960px;
   margin: 0 auto;
-  padding: 1.5rem 2rem;
 }
 
 
@@ -37,6 +36,7 @@ main {
   align-items: center;
   background-color: #000;
   color: #fff;
+  padding: 1.5rem 0; /* vertical only */
 }
 
 .header-left {
@@ -63,19 +63,18 @@ main {
 .header-nav {
   display: flex;
   align-items: center;
-  gap: 1rem; /* gap avoids layout shift */
+  gap: 1rem;
 }
 
-/* Links + active item */
 .header-nav a,
 .header-nav strong {
   font-weight: 600;
   color: #fff;
-  text-decoration: none; /* NO underlines, ever */
+  text-decoration: none;
   white-space: nowrap;
 }
 
-/* Force nav links to stay white in all states */
+/* Force nav links to stay white */
 .header-nav a,
 .header-nav a:link,
 .header-nav a:visited,
@@ -85,7 +84,6 @@ main {
   text-decoration: none;
 }
 
-/* Visual distinction without underline */
 .header-nav a {
   opacity: 0.85;
 }
@@ -97,17 +95,17 @@ main {
 
 
 /* =========================================================
-   Main Content Safety
+   Main Content
    ========================================================= */
 
-/* Prevent single-line overflow bugs (Support page fix) */
 main {
-  overflow-wrap: anywhere;
+  padding: 1.5rem 0 3rem;
+  overflow-wrap: anywhere; /* safety */
 }
 
 
 /* =========================================================
-   Privacy Page Header Effect (CSS-only)
+   Privacy Page Header Effect
    ========================================================= */
 /*
 .page-privacy .site-header {
