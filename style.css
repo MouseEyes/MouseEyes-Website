@@ -1,12 +1,42 @@
+/* =========================================================
+   Base / Reset
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Calibri, "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #000;
+  margin: 0; /* IMPORTANT: prevents header width drift */
+}
+
+
+/* =========================================================
+   Shared Layout Width
+   ========================================================= */
+
+.site-header,
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+}
+
+
+/* =========================================================
+   Header
+   ========================================================= */
+
 .site-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   background-color: #000;
   color: #fff;
-
-  padding: 1.5rem 2rem;
 }
 
 .header-left {
@@ -25,26 +55,27 @@
   margin: 0;
 }
 
-.header-nav a:hover {
-  text-decoration: underline;
-}
 
-.header-nav strong {
-  font-weight: bold;
-}
+/* =========================================================
+   Navigation
+   ========================================================= */
 
 .header-nav {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1rem; /* gap avoids layout shift */
 }
 
+/* Links + active item */
 .header-nav a,
 .header-nav strong {
-  font-weight: 600; /* or whatever “bold” weight you like */
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none; /* NO underlines, ever */
+  white-space: nowrap;
 }
 
-/* Ensure nav links stay white in all states */
+/* Force nav links to stay white in all states */
 .header-nav a,
 .header-nav a:link,
 .header-nav a:visited,
@@ -54,34 +85,53 @@
   text-decoration: none;
 }
 
+/* Visual distinction without underline */
 .header-nav a {
   opacity: 0.85;
 }
 
 .header-nav strong {
   opacity: 1;
+  cursor: default;
 }
-/* Page Specific logic */
+
+
+/* =========================================================
+   Main Content Safety
+   ========================================================= */
+
+/* Prevent single-line overflow bugs (Support page fix) */
+main {
+  overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   Privacy Page Header Effect (CSS-only)
+   ========================================================= */
+
 .page-privacy .site-header {
   background-color: #000;
   background-image:
-    url("/images/eye1.png"),
-    url("/images/eye2.png"),
-    url("/images/eye3.png"),
-    url("/images/eye4.png");
+    url("/images/mouseeyes-eye.png"),
+    url("/images/mouseeyes-eye.png"),
+    url("/images/mouseeyes-eye.png"),
+    url("/images/mouseeyes-eye.png"),
+    url("/images/mouseeyes-eye.png"),
+    url("/images/mouseeyes-eye.png");
   background-repeat: no-repeat;
   background-position:
     10% 30%,
-    30% 70%,
-    70% 25%,
-    85% 60%;
-}
-
-/* Base typography for MouseEyes website */
-body {
-  font-family: Arial, Calibri, "Segoe UI", system-ui, -apple-system, sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-  color: #000;
-  margin: 2rem;
+    25% 70%,
+    45% 25%,
+    65% 60%,
+    80% 28%,
+    90% 65%;
+  background-size:
+    54px 54px,
+    42px 42px,
+    64px 64px,
+    48px 48px,
+    38px 38px,
+    58px 58px;
 }
