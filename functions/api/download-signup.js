@@ -1,6 +1,13 @@
 export async function onRequestPost(context) {
   const { request, env } = context;
 
+  if (!env.DB) {
+    return Response.json(
+      { error: "DB binding missing at runtime" },
+      { status: 500 }
+    );
+  }
+
   let body;
   try {
     body = await request.json();
