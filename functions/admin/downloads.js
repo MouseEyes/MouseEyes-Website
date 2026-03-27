@@ -1,29 +1,39 @@
+
 export async function onRequestGet({ env }) {
-  // Query recent rows (adjust LIMIT if you want)
+  // 1) Total count of all rows
+  const countRow = await env.DB
+    .prepare(`SELECT COUNT(*) AS cnt FROM download_signups`)
+    .first();
+
+  const totalCount = countRow?.cnt ?? 0;
+
+  // 2) Last 10 rows
   const { results } = await env.DB.prepare(`
     SELECT name, email, updates, created_at
     FROM download_signups
     ORDER BY created_at DESC
-    LIMIT 200
+    LIMIT 10
   `).all();
 
-  const masked = (results || []).map((row) => ({
+  const maskedRows = (results || []).map((row) => ({
     name: maskName(row.name),
-    email: maskEmail(row.email),               // preferred: Pat***@hot***
-    // email: maskEmailKeepTld(row.email),     // alternate: Pat***@hot***.com
+    email: maskEmail(row.email), // Pat***@hot***
     updates: row.updates,
     created_at: row.created_at,
   }));
 
-
-	return new Response(JSON.stringify(masked, null, 2), {
-	  headers: {
-		"Content-Type": "application/json; charset=utf-8",
-		"Cache-Control": "no-store"
-	  }
-	});
-
+  // 3) Return both: last 10 + total count
+  return new Response(JSON.stringify({
+    total_count: totalCount,
+    last_10: maskedRows
+  }, null, 2), {
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      "Cache-Control": "no-store"
+    }
+  });
 }
+
 
 /**
  * Name masking:
