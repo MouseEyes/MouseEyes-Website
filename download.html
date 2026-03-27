@@ -1,16 +1,16 @@
-<!-- download.html -->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MouseEyes — Download</title>
+
   <link rel="stylesheet" href="style.css" />
+
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
   <link rel="shortcut icon" href="favicon-32x32.png" />
 
-  <!-- Page-local styles for the gated download form -->
   <style>
     .download-card {
       margin: 1.25rem 0;
@@ -18,8 +18,8 @@
       border: 1px solid #ddd;
       border-radius: 10px;
       background: #fafafa;
+      max-width: 640px;
     }
-    .download-card h3 { margin-top: 0; }
 
     .form-row {
       display: grid;
@@ -27,9 +27,11 @@
       gap: 0.6rem 1rem;
       align-items: center;
       margin: 0.75rem 0;
-      max-width: 640px;
     }
-    .form-row label { font-weight: 600; }
+
+    .form-row label {
+      font-weight: 600;
+    }
 
     .form-row input[type="text"],
     .form-row input[type="email"] {
@@ -40,67 +42,46 @@
       font: inherit;
     }
 
-    /* Left-justify checkboxes within the grid cell */
     .form-row input[type="checkbox"] {
       justify-self: start;
-      align-self: start;
-      margin-top: 0.2rem;
-    }
-
-    .form-row .help {
-      grid-column: 2;
-      font-size: 0.9rem;
-      color: #444;
-      margin-top: -0.35rem;
     }
 
     .form-actions {
-      display: flex;
-      gap: 0.75rem;
-      align-items: center;
       margin-top: 1rem;
     }
+
     .btn {
-      appearance: none;
       border: 0;
       border-radius: 10px;
-      padding: 0.65rem 0.9rem;
+      padding: 0.65rem 1rem;
       font-weight: 700;
       background: #000;
       color: #fff;
       cursor: pointer;
     }
-    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-    .note {
-      font-size: 0.9rem;
-      color: #333;
-      margin: 0.5rem 0 0;
+    .hidden {
+      display: none;
     }
+
+    .status {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: #fff;
+    }
+
     .download-link {
       display: inline-block;
       margin-top: 0.75rem;
       font-weight: 700;
     }
-    .hidden { display: none; }
-    .status {
-      margin-top: 0.75rem;
-      padding: 0.65rem 0.75rem;
-      border-radius: 10px;
-      background: #fff;
-      border: 1px solid #e4e4e4;
-      max-width: 640px;
-    }
-    .status strong { display: block; margin-bottom: 0.25rem; }
-
-    @media (max-width: 600px) {
-      .form-row { grid-template-columns: 1fr; }
-      .form-row .help { grid-column: 1; }
-    }
   </style>
 </head>
 
 <body class="page-download">
+
   <!-- Site Header -->
   <header class="site-header">
     <div class="header-left">
@@ -119,58 +100,66 @@
 
   <!-- Main Page Content -->
   <main>
+
     <h2>Download MouseEyes for Windows 11</h2>
-    <p>MouseEyes is a lightweight Windows utility that makes your mouse pointer impossible to lose — especially on multimonitor setups.</p>
-    <p>The download below includes the <strong>full version</strong> of MouseEyes.<br />
-      All features are enabled for everyone.</p>
+
+    <p>
+      MouseEyes is a lightweight Windows utility that makes your mouse pointer
+      impossible to lose — especially on multimonitor setups.
+    </p>
+
+    <p>
+      The download below includes the <strong>full version</strong> of MouseEyes.<br />
+      All features are enabled for everyone.
+    </p>
 
     <p>---- Prerelease Version ----</p>
 
-    <!-- Gated download: collect contact info before showing the link -->
-    <section class="download-card" aria-labelledby="download-gate-title">
-      <h3 id="download-gate-title">Get your download link</h3>
-      <p class="note">Enter your details below. <strong>Name is required</strong>. After submitting, your download link will appear.</p>
+    <!-- ✅ Gated Download Box -->
+    <section class="download-card">
+      <h3>Get your download link</h3>
+      <p><strong>Name is required.</strong> Email is optional.</p>
 
-      <!-- Using a button click handler (not form submit) prevents the page from jumping to top in some browsers -->
-      <form id="downloadGateForm" novalidate onsubmit="return false;">
+      <form id="downloadGateForm" novalidate>
+
         <div class="form-row">
-          <label for="name">Name <span aria-hidden="true">*</span></label>
-          <input id="name" name="name" type="text" autocomplete="name" required />
+          <label for="name">Name *</label>
+          <input id="name" type="text" required />
         </div>
 
         <div class="form-row">
-          <label for="email">Email (optional)</label>
-          <input id="email" name="email" type="email" autocomplete="email" />
-          <div class="help">If you provide an email, we can share important release notes and support updates (if you opt in).</div>
+          <label for="email">Email</label>
+          <input id="email" type="email" />
         </div>
 
         <div class="form-row">
           <label for="updates">Email updates?</label>
-          <input id="updates" name="updates" type="checkbox" />
-          <div class="help">Check this box if you’d like occasional updates about MouseEyes.</div>
+          <input id="updates" type="checkbox" />
         </div>
 
         <div class="form-actions">
-          <button class="btn" type="button" id="submitBtn">Show download link</button>
+          <button id="submitBtn" class="btn" type="submit">
+            Show download link
+          </button>
         </div>
 
-        <div id="status" class="status hidden" role="status" aria-live="polite"></div>
+        <div id="status" class="status hidden"></div>
 
         <div id="downloadLinkWrap" class="hidden">
           <a
-            class="download-link"
             id="downloadLink"
+            class="download-link"
             href="https://github.com/MouseEyes/MouseEyes-Downloads/releases/download/v2.2.45/MouseEyesInstaller_2.2.45_x64.exe"
             download
           >
             Download MouseEyes (v2.2.45)
           </a>
-          <p class="note">If the download doesn’t start, click the link above again.</p>
         </div>
-      </form>
 
-      <p class="note"><strong>Note:</strong> This page reveals the link client-side after you submit the form. To truly enforce collection (and store submissions), you’ll want to post the form to a backend or a form service.</p>
+      </form>
     </section>
+
+    <!-- ✅ RESTORED CONTENT BELOW -->
 
     <h3>System Requirements</h3>
     <ul>
@@ -193,99 +182,11 @@
       <li>Includes all builtin profiles and tools</li>
       <li>Profile Editor included</li>
     </ul>
+
   </main>
 
-  <script>
-    (function () {
-      const form = document.getElementById('downloadGateForm');
-      const name = document.getElementById('name');
-      const email = document.getElementById('email');
-      const updates = document.getElementById('updates');
-      const status = document.getElementById('status');
-      const linkWrap = document.getElementById('downloadLinkWrap');
-      const submitBtn = document.getElementById('submitBtn');
+  <!-- ✅ ONLY SCRIPT ON THE PAGE -->
+  <script src="download-gate.js" defer></script>
 
-      function showStatus(title, msg) {
-        status.classList.remove('hidden');
-        status.innerHTML = `<strong>${title}</strong>${msg}`;
-      }
-
-      function validEmail(value) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value).trim());
-      }
-
-      function handleGate() {
-        const nameVal = name.value.trim();
-        const emailVal = email.value.trim();
-
-        if (!nameVal) {
-          linkWrap.classList.add('hidden');
-          showStatus('Name required', 'Please enter your name to continue.');
-          name.focus();
-          return;
-        }
-
-        if (emailVal && !validEmail(emailVal)) {
-          linkWrap.classList.add('hidden');
-          showStatus('Check your email', 'That email address doesn't look valid. You can also leave the email field blank.');
-          email.focus();
-          return;
-        }
-
-        try {
-          localStorage.setItem('mouseeyes_download_name', nameVal);
-          localStorage.setItem('mouseeyes_download_email', emailVal);
-          localStorage.setItem('mouseeyes_download_updates', updates.checked ? 'yes' : 'no');
-          localStorage.setItem('mouseeyes_download_gate_complete', 'yes');
-        } catch (_) {}
-
-        // Optional backend hook:
-        // fetch('/api/download-signup', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ name: nameVal, email: emailVal, updates: updates.checked }) });
-
-        showStatus('Thanks!', 'Your download link is ready below.');
-        linkWrap.classList.remove('hidden');
-
-        // Focus the link WITHOUT scrolling the page unexpectedly.
-        const link = document.getElementById('downloadLink');
-        link.focus({ preventScroll: true });
-      }
-
-      // Click handler (prevents browser from trying to submit the form and jumping)
-      submitBtn.addEventListener('click', handleGate);
-
-      // Also support Enter key in the form fields.
-      form.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          handleGate();
-        }
-      });
-
-      // Prefill from localStorage if available.
-      try {
-        if (localStorage.getItem('mouseeyes_download_name')) {
-          name.value = localStorage.getItem('mouseeyes_download_name') || '';
-        }
-        if (localStorage.getItem('mouseeyes_download_email')) {
-          email.value = localStorage.getItem('mouseeyes_download_email') || '';
-        }
-        updates.checked = (localStorage.getItem('mouseeyes_download_updates') === 'yes');
-
-        if (localStorage.getItem('mouseeyes_download_gate_complete') === 'yes' && name.value.trim()) {
-          showStatus('Welcome back!', 'Your download link is ready below.');
-          linkWrap.classList.remove('hidden');
-        }
-      } catch (_) {}
-
-      // Disable button if email is present but invalid (nice UX).
-      email.addEventListener('input', function () {
-        if (!email.value.trim()) {
-          submitBtn.disabled = false;
-          return;
-        }
-        submitBtn.disabled = !validEmail(email.value);
-      });
-    })();
-  </script>
 </body>
 </html>
