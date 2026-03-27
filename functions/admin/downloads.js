@@ -15,13 +15,14 @@ export async function onRequestGet({ env }) {
     created_at: row.created_at,
   }));
 
-  return Response.json(masked, {
-    headers: {
-      "Content-Type": "application/json; charset=utf-8",
-      // Optional: discourage caching for admin output
-      "Cache-Control": "no-store"
-    }
-  });
+
+	return new Response(JSON.stringify(masked, null, 2), {
+	  headers: {
+		"Content-Type": "application/json; charset=utf-8",
+		"Cache-Control": "no-store"
+	  }
+	});
+
 }
 
 /**
