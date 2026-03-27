@@ -44,7 +44,7 @@ function maskName(name) {
  */
 function maskEmail(email) {
   const s = (email ?? "").toString().trim();
-  if (!s) return "***";
+  if (!s) return "";
 
   const at = s.indexOf("@");
   if (at === -1) {
