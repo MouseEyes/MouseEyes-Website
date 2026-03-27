@@ -13,7 +13,7 @@
 
   function showStatus(title, msg) {
     statusEl.classList.remove('hidden');
-    statusEl.innerHTML = `<strong>${title}</strong> _<br>${msg}`;
+    statusEl.innerHTML = `<strong>${title}</strong> <br>${msg}`;
   }
 
   function validEmail(value) {
