@@ -114,6 +114,57 @@
   <pre id="output">(nothing yet)</pre>
 
 <script>
+
+	async function loadDownloads() {
+	  const tbody = document.querySelector("#downloadsTable tbody");
+	  tbody.innerHTML = "<tr><td colspan='4'>Loading…</td></tr>";
+
+	  let response;
+	  try {
+		response = await fetch("/admin/downloads?limit=50");
+	  } catch (err) {
+		tbody.innerHTML = "<tr><td colspan='4'>Failed to fetch data</td></tr>";
+		return;
+	  }
+
+	  const data = await response.json();
+	  const rows = data.rows || [];
+
+	  tbody.innerHTML = "";
+
+	  if (rows.length === 0) {
+		tbody.innerHTML = "<tr><td colspan='4'>No records found</td></tr>";
+		return;
+	  }
+
+	  for (const row of rows) {
+		const tr = document.createElement("tr");
+
+		tr.innerHTML = `
+		  <td>${escapeHtml(row.created_at)}</td>
+		  <td>${escapeHtml(row.name)}</td>
+		  <td>${escapeHtml(row.email || "")}</td>
+		  <td style="text-align:center;">${row.updates ? "✔" : ""}</td>
+		`;
+
+		tbody.appendChild(tr);
+	  }
+	}
+
+	/* Simple HTML escaping to avoid accidental injection */
+	function escapeHtml(value) {
+	  return (value ?? "").toString().replace(/[&<>"']/g, c => ({
+		"&": "&amp;",
+		"<": "&lt;",
+		">": "&gt;",
+		'"': "&quot;",
+		"'": "&#39;"
+	  })[c]);
+	}
+
+	/* Auto-load table when page opens */
+	loadDownloads();
+
   let lastDatePreviewCount = null;
   let lastPrefixPreviewCount = null;
 
