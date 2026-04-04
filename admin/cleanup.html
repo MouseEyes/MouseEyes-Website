@@ -55,6 +55,29 @@
   <div class="muted">
     Protected by Cloudflare Access · Preview required before delete
   </div>
+  
+	<h2>Recent Download Signups</h2>
+
+	<button onclick="loadDownloads()">Refresh table</button>
+
+	<table id="downloadsTable"
+		   style="margin-top:1rem; width:100%; border-collapse:collapse;"
+		   border="1"
+		   cellpadding="6">
+	  <thead>
+		<tr style="background:#f0f0f0;">
+		  <th>Date</th>
+		  <th>Name</th>
+		  <th>Email</th>
+		  <th>Updates</th>
+		</tr>
+	  </thead>
+	  <tbody>
+		<tr>
+		  <td colspan="4">Loading…</td>
+		</tr>
+	  </tbody>
+	</table>
 
   <!-- ===== Delete by Date ===== -->
   <h2>Delete records older than a date</h2>
