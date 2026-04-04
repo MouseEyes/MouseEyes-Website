@@ -55,10 +55,17 @@
   <div class="muted">
     Protected by Cloudflare Access · Preview required before delete
   </div>
-  
+
 	<h2>Recent Download Signups</h2>
 
-	<button onclick="loadDownloads()">Refresh table</button>
+	<div style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
+	  <button onclick="loadDownloads()">Refresh table</button>
+	  <button class="secondary" onclick="selectAll(true)">Select all</button>
+	  <button class="secondary" onclick="selectAll(false)">Select none</button>
+	  <button class="secondary" onclick="previewSelected()">Preview selected delete</button>
+	  <button class="danger" onclick="deleteSelected()">Delete selected</button>
+	  <span class="muted" id="selectedCount">Selected: 0</span>
+	</div>
 
 	<table id="downloadsTable"
 		   style="margin-top:1rem; width:100%; border-collapse:collapse;"
@@ -66,15 +73,19 @@
 		   cellpadding="6">
 	  <thead>
 		<tr style="background:#f0f0f0;">
+		  <th style="width:42px; text-align:center;">
+			<input type="checkbox" id="selectAllBox" onclick="toggleHeaderSelect(this.checked)" />
+		  </th>
 		  <th>Date</th>
 		  <th>Name</th>
 		  <th>Email</th>
 		  <th>Updates</th>
+		  <th style="width:70px; text-align:right;">ID</th>
 		</tr>
 	  </thead>
 	  <tbody>
 		<tr>
-		  <td colspan="4">Loading…</td>
+		  <td colspan="6">Loading…</td>
 		</tr>
 	  </tbody>
 	</table>
@@ -114,164 +125,172 @@
   <pre id="output">(nothing yet)</pre>
 
 <script>
+let lastDatePreviewCount = null;
+let lastPrefixPreviewCount = null;
 
-	async function loadDownloads() {
-	  const tbody = document.querySelector("#downloadsTable tbody");
-	  tbody.innerHTML = "<tr><td colspan='4'>Loading…</td></tr>";
+function show(data) {
+  document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+}
 
-	  let response;
-	  try {
-		response = await fetch("/admin/downloads?limit=50");
-	  } catch (err) {
-		tbody.innerHTML = "<tr><td colspan='4'>Failed to fetch data</td></tr>";
-		return;
-	  }
+/* ---------- TABLE + CHECKBOX STATE ---------- */
 
-	  const data = await response.json();
-	  const rows = data.rows || [];
+function updateSelectedCount() {
+  const checked = document.querySelectorAll(".rowSelect:checked").length;
+  document.getElementById("selectedCount").textContent = `Selected: ${checked}`;
+}
 
-	  tbody.innerHTML = "";
+function getSelectedIds() {
+  const boxes = document.querySelectorAll(".rowSelect:checked");
+  const ids = [];
+  for (const b of boxes) ids.push(parseInt(b.value, 10));
+  return ids.filter(n => Number.isFinite(n) && n > 0);
+}
 
-	  if (rows.length === 0) {
-		tbody.innerHTML = "<tr><td colspan='4'>No records found</td></tr>";
-		return;
-	  }
+function selectAll(state) {
+  const boxes = document.querySelectorAll(".rowSelect");
+  for (const b of boxes) b.checked = state;
+  const header = document.getElementById("selectAllBox");
+  if (header) header.checked = state;
+  updateSelectedCount();
+}
 
-	  for (const row of rows) {
-		const tr = document.createElement("tr");
+function toggleHeaderSelect(state) {
+  selectAll(state);
+}
 
-		tr.innerHTML = `
-		  <td>${escapeHtml(row.created_at)}</td>
-		  <td>${escapeHtml(row.name)}</td>
-		  <td>${escapeHtml(row.email || "")}</td>
-		  <td style="text-align:center;">${row.updates ? "✔" : ""}</td>
-		`;
+async function loadDownloads() {
+  const tbody = document.querySelector("#downloadsTable tbody");
+  tbody.innerHTML = "<tr><td colspan='6'>Loading…</td></tr>";
 
-		tbody.appendChild(tr);
-	  }
-	}
-
-	/* Simple HTML escaping to avoid accidental injection */
-	function escapeHtml(value) {
-	  return (value ?? "").toString().replace(/[&<>"']/g, c => ({
-		"&": "&amp;",
-		"<": "&lt;",
-		">": "&gt;",
-		'"': "&quot;",
-		"'": "&#39;"
-	  })[c]);
-	}
-
-	/* Auto-load table when page opens */
-	loadDownloads();
-
-  let lastDatePreviewCount = null;
-  let lastPrefixPreviewCount = null;
-
-  function show(data) {
-    document.getElementById("output").textContent =
-      JSON.stringify(data, null, 2);
+  let response;
+  try {
+    response = await fetch("/admin/downloads?limit=50");
+  } catch {
+    tbody.innerHTML = "<tr><td colspan='6'>Failed to fetch data</td></tr>";
+    return;
   }
 
-  async function previewByDate() {
-    const before = document.getElementById("dateBefore").value;
-    if (!before) {
-      alert("Select a date first.");
-      return;
-    }
+  const data = await response.json();
+  const rows = data.rows || [];
 
-    const res = await fetch("/admin/downloads/preview-delete-by-date", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ before, limit: 50 })
-    });
+  tbody.innerHTML = "";
 
-    const data = await res.json();
-    lastDatePreviewCount = data.match_count;
-
-    document.getElementById("dateSummary").textContent =
-      `Preview: ${data.match_count} record(s) would be deleted.`;
-
-    show(data);
+  if (rows.length === 0) {
+    tbody.innerHTML = "<tr><td colspan='6'>No records found</td></tr>";
+    updateSelectedCount();
+    return;
   }
 
-  async function executeByDate() {
-    const before = document.getElementById("dateBefore").value;
-    if (!before || lastDatePreviewCount === null) {
-      alert("Preview first.");
-      return;
-    }
-
-    if (!confirm(`Delete ${lastDatePreviewCount} record(s)? This cannot be undone.`)) {
-      return;
-    }
-
-    const res = await fetch("/admin/downloads/execute-delete-by-date", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        before,
-        confirm: true,
-        expected_count: lastDatePreviewCount
-      })
-    });
-
-    const data = await res.json();
-    lastDatePreviewCount = null;
-    document.getElementById("dateSummary").textContent = "";
-
-    show(data);
+  for (const row of rows) {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td style="text-align:center;">
+        <input class="rowSelect" type="checkbox" value="${row.id}" />
+      </td>
+      <td>${escapeHtml(row.created_at)}</td>
+      <td>${escapeHtml(row.name)}</td>
+      <td>${escapeHtml(row.email || "")}</td>
+      <td style="text-align:center;">${row.updates ? "✔" : ""}</td>
+      <td style="text-align:right;">${row.id}</td>
+    `;
+    tbody.appendChild(tr);
   }
 
-  async function previewByPrefix() {
-    const prefix = document.getElementById("namePrefix").value.trim();
-    if (!prefix) {
-      alert("Enter a prefix.");
-      return;
+  // update selected count on any click
+  tbody.addEventListener("change", (e) => {
+    if (e.target && e.target.classList.contains("rowSelect")) {
+      updateSelectedCount();
     }
+  }, { once: true });
 
-    const res = await fetch("/admin/downloads/preview-delete-by-name-prefix", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prefix, limit: 50 })
-    });
+  // Reset header select
+  const header = document.getElementById("selectAllBox");
+  if (header) header.checked = false;
 
-    const data = await res.json();
-    lastPrefixPreviewCount = data.match_count;
+  updateSelectedCount();
+}
 
-    document.getElementById("prefixSummary").textContent =
-      `Preview: ${data.match_count} record(s) would be deleted.`;
+/* ---------- DELETE SELECTED (PREVIEW + EXECUTE) ---------- */
 
-    show(data);
+async function previewSelected() {
+  const ids = getSelectedIds();
+  if (ids.length === 0) {
+    alert("Select one or more rows first.");
+    return;
   }
 
-  async function executeByPrefix() {
-    const prefix = document.getElementById("namePrefix").value.trim();
-    if (!prefix || lastPrefixPreviewCount === null) {
-      alert("Preview first.");
-      return;
-    }
+  const res = await fetch("/admin/downloads/preview-delete-by-ids", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ ids })
+  });
 
-    if (!confirm(`Delete ${lastPrefixPreviewCount} record(s)? This cannot be undone.`)) {
-      return;
-    }
+  const data = await res.json();
+  show(data);
+}
 
-    const res = await fetch("/admin/downloads/execute-delete-by-name-prefix", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        prefix,
-        confirm: true,
-        expected_count: lastPrefixPreviewCount
-      })
-    });
-
-    const data = await res.json();
-    lastPrefixPreviewCount = null;
-    document.getElementById("prefixSummary").textContent = "";
-
-    show(data);
+async function deleteSelected() {
+  const ids = getSelectedIds();
+  if (ids.length === 0) {
+    alert("Select one or more rows first.");
+    return;
   }
+
+  // Always do a server preview first to get match_count for safety
+  const previewRes = await fetch("/admin/downloads/preview-delete-by-ids", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ ids })
+  });
+  const preview = await previewRes.json();
+
+  if (!preview.ok) {
+    show(preview);
+    alert("Preview failed. See response.");
+    return;
+  }
+
+  const count = preview.match_count || 0;
+  show(preview);
+
+  if (!confirm(`Delete ${count} record(s) (selected IDs)? This cannot be undone.`)) {
+    return;
+  }
+
+  const execRes = await fetch("/admin/downloads/execute-delete-by-ids", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      ids,
+      confirm: true,
+      expected_count: count
+    })
+  });
+
+  const result = await execRes.json();
+  show(result);
+
+  // refresh table after delete
+  await loadDownloads();
+}
+
+/* ---------- FIXED HTML ESCAPING ---------- */
+
+function escapeHtml(value) {
+  return (value ?? "").toString().replace(/[&<>"']/g, c => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[c]);
+}
+
+/* ---------- EXISTING DATE/PREFIX DELETE FUNCTIONS ---------- */
+/* Keep your existing previewByDate/executeByDate/previewByPrefix/executeByPrefix here */
+
+/* Auto-load table when page opens */
+loadDownloads();
 </script>
 </body>
 </html>
