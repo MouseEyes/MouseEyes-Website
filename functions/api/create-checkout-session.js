@@ -12,7 +12,13 @@ export async function onRequestPost({ request, env }) {
     return Response.json({ error: "Invalid JSON body" }, { status: 400 });
   }
 
-  const { licenseKind, customerName, customerEmail, purchaseClickUtcIso, purchaseClickLocalDate } = body;
+  const {
+    licenseKind,
+    customerName,
+    customerEmail,
+    purchaseClickUtcIso,
+    purchaseClickLocalDate,
+  } = body;
 
   if (!licenseKind || !customerName || !customerEmail) {
     return Response.json(
@@ -30,13 +36,13 @@ export async function onRequestPost({ request, env }) {
     return Response.json({ error: "Invalid licenseKind" }, { status: 400 });
   }
 
-  // Stripe client (use account default API version — avoids version mismatch issues)
-  const stripe = new Stripe(env.STRIPE_SECRET_KEY);
+  // ✅ Cloudflare/Workers-compatible Stripe client:
+  const stripe = new Stripe(env.STRIPE_SECRET_KEY, {
+    httpClient: Stripe.createFetchHttpClient(),
+    apiVersion: "2020-08-27",
+  });
 
-  // ✅ Dynamic base URL:
-  // - Local dev: http://127.0.0.1:8788
-  // - Production: https://mouseeyes.com
-  // - Any staging host: whatever host you’re testing on
+  // Dynamic base URL based on the incoming request host
   const baseUrl = new URL(request.url).origin;
 
   const session = await stripe.checkout.sessions.create({
@@ -45,9 +51,7 @@ export async function onRequestPost({ request, env }) {
     line_items: [{
       price_data: {
         currency: "usd",
-        product_data: {
-          name: `MouseEyes ${licenseKind} License`,
-        },
+        product_data: { name: `MouseEyes ${licenseKind} License` },
         unit_amount: priceCents,
       },
       quantity: 1,
@@ -57,13 +61,9 @@ export async function onRequestPost({ request, env }) {
       license_kind: licenseKind,
       customer_name: customerName,
       customer_email: customerEmail,
-
-      // Optional debug fields (included only if provided by the client)
       ...(purchaseClickUtcIso ? { purchase_click_utc: String(purchaseClickUtcIso) } : {}),
       ...(purchaseClickLocalDate ? { purchase_click_local_date: String(purchaseClickLocalDate) } : {}),
     },
-
-    // ✅ Redirect back to whichever host initiated checkout
     success_url: `${baseUrl}/purchase-success.html?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${baseUrl}/purchase-cancelled.html`,
   });
