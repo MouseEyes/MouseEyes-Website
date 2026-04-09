@@ -1,0 +1,16 @@
+{
+  "name": "2026-04-04-website-github---plus-stripe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "download-gate.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "stripe": "^22.0.1"
+  }
+}

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>MouseEyes — Purchase Complete</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="/style.css" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="shortcut icon" href="/favicon-32x32.png" />
+</head>
+
+<body class="page-purchase-success">
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-left">
+      <img
+        src="/images/mouseeyes-logo.png"
+        alt="MouseEyes logo"
+        class="site-logo"
+      />
+      <h1 class="page-title">Thank You</h1>
+    </div>
+
+    <nav class="header-nav" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/download.html">Download</a>
+      <a href="/pricing.html">Pricing</a>
+      <a href="/support.html">Support</a>
+      <a href="/privacy.html">Privacy</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <h2>✅ Purchase Successful</h2>
+
+    <p>
+      Thank you for purchasing a <strong>MouseEyes license</strong>.
+      Your payment was completed successfully.
+    </p>
+
+    <p>
+      <strong>Your license will be delivered by email shortly.</strong><br />
+      Please check the inbox of the email address you provided during checkout.
+    </p>
+
+    <p>
+      The email will include:
+    </p>
+
+    <ul>
+      <li>Your signed <code>MouseEyes.lic</code> license file</li>
+      <li>Simple instructions for installing your license</li>
+    </ul>
+
+    <h3>How to install your license</h3>
+
+    <ol>
+      <li>Save the attached <code>MouseEyes.lic</code> file to your computer</li>
+      <li>Open MouseEyes</li>
+      <li>Select <strong>License…</strong> from the menu</li>
+      <li>Import the license file</li>
+    </ol>
+
+    <p>
+      If you don’t see the email within a few minutes, please check your spam
+      or junk folder.
+    </p>
+
+    <p>
+      If you need assistance, contact us at
+      <a href="mailto:Admin@MouseEyes.com">Admin@MouseEyes.com</a>.
+    </p>
+
+    <hr />
+
+    <p>
+      <a href="/download.html"><strong>Download MouseEyes</strong></a><br />
+      <a href="/support.html">Visit Support</a>
+    </p>
+
+    <!-- Optional debug visibility during early rollout -->
+    <script>
+      // This exists only for debugging / support purposes
+      const params = new URLSearchParams(window.location.search);
+      const sessionId = params.get("session_id");
+      if (sessionId) {
+        const p = document.createElement("p");
+        p.style.fontSize = "0.9em";
+        p.style.color = "#666";
+        p.textContent = "Reference ID: " + sessionId;
+        document.querySelector("main").appendChild(p);
+      }
+    </script>
+  </main>
+</body>
+</html>
+``
