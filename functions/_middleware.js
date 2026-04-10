@@ -13,18 +13,26 @@ export async function onRequest(context) {
   const response = await next();
 
   /*
-    CASES:
-    - Never-existed page → already returns 404 (leave it)
-    - Existing page → returns 200 (leave it)
-    - Deleted page → returns 200 BUT SHOULD NOT
+    We only intervene when:
+    - Pages returned 200
+    - This is NOT the homepage
+    - This is NOT a static asset
+    - This path used to exist but was deleted
   */
 
   if (response.status === 200) {
-    // If the path ends with .html but the file no longer exists,
-    // this is a deleted static page — return 410 Gone
-    if (url.pathname.endsWith(".html")) {
-      return new Response("Gone", { status: 410 });
+    // Allow the homepage
+    if (url.pathname === "/" || url.pathname === "/index.html") {
+      return response;
     }
+
+    // Allow static assets (css, js, images, etc.)
+    if (url.pathname.match(/\.(css|js|png|jpg|jpeg|gif|svg|ico|txt|xml|json)$/)) {
+      return response;
+    }
+
+    // Anything else resolving to 200 is a deleted page → gone
+    return new Response("Gone", { status: 410 });
   }
 
   return response;
