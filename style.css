@@ -104,11 +104,16 @@ html {
    Main Content
    ========================================================= */
 
-main {
+/* main {
   padding: 1.5rem 0 3rem;
-  overflow-wrap: anywhere; /* safety */
+  overflow-wrap: anywhere; /* safety 
+}  
+  */
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
 }
-
 
 /* =========================================================
    Privacy Page Header Effect
