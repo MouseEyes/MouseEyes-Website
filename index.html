@@ -12,6 +12,28 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
   <link rel="shortcut icon" href="/favicon-32x32.png" />
   <link rel="canonical" href="https://www.mouseeyes.com/" />
+    <!-- Small, page-specific styles for title + GIF layout -->
+  <style>
+    .hero-title-row {
+      display: flex;
+      align-items: flex-start;   /* top-align title and gif */
+      justify-content: space-between;
+      gap: 1.25rem;
+      flex-wrap: wrap;           /* responsive: gif drops under title if narrow */
+      margin: 0 0 0.75rem;
+    }
+    .hero-title-row h3 {
+      margin: 0;
+    }
+    .hero-gif {
+      width: 442px;
+      height: 226px;
+      max-width: 100%;
+      border-radius: 10px;
+      display: block;
+    }
+  </style>
+
 </head>
 
 <body class="page-home">
@@ -37,7 +59,20 @@
 
   <!-- Main Page Content -->
   <main>
-    <h2>Never Lose Your Mouse Again</h2>
+    <!-- Title + GIF (GIF to the right, top-aligned) -->
+    <section class="hero-title-row">
+      <h3>Never Lose Your Mouse Again</h3>
+
+      <img
+        class="hero-gif"
+        src="/images/ME.gif"
+        alt="MouseEyes demo animation"
+        width="490"
+        height="264"
+        loading="eager"
+        decoding="async"
+      />
+    </section>
 
     <p>MouseEyes is a lightweight Windows utility that displays animated eyes on your Windows 11 desktop that follow your mouse pointer across multiple monitors — making your cursor instantly visible, even on large or complex setups.</p>
 
