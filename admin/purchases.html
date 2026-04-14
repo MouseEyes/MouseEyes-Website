@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MouseEyes – Purchases</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 8px; border-bottom: 1px solid #ccc; }
+    th { text-align: left; background: #f4f4f4; }
+    .right { text-align: right; }
+  </style>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-left">
+    <img src="/images/mouseeyes-logo.png" class="site-logo">
+    <h1 class="page-title">Purchases</h1>
+  </div>
+</header>
+
+<main>
+  <p>Recent Stripe purchases (live data)</p>
+	<label>
+	  <input type="radio" name="mode" value="live" checked> Live
+	</label>
+	<label style="margin-left:12px;">
+	  <input type="radio" name="mode" value="test"> Test
+	</label>
+	<button id="refreshBtn" style="margin-left:12px;">Refresh</button>
+
+  <table id="purchaseTable">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>License</th>
+        <th class="right">Amount</th>
+		<th>Mode</th>
+        <th>Stripe</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td colspan="7">Loading…</td></tr>
+    </tbody>
+  </table>
+</main>
+
+<script>
+async function loadPurchases() {
+  const tbody = document.querySelector("#purchaseTable tbody");
+  tbody.innerHTML = "<tr><td colspan='7'>Loading…</td></tr>";
+
+  const mode =
+    document.querySelector("input[name='mode']:checked").value;
+
+  const res = await fetch(`/admin/purchases_list?mode=${encodeURIComponent(mode)}`);
+  const data = await res.json();
+
+  tbody.innerHTML = "";
+
+  for (const p of data) {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${new Date(p.created).toLocaleString()}</td>
+      <td>${p.name}</td>
+      <td>${p.email}</td>
+      <td>${p.license}</td>
+      <td class="right">$${p.amount.toFixed(2)}</td>
+      <td>${p.mode}</td>
+      <td><a href="${p.dashboard_url}" target="_blank">View</a></td>
+    `;
+    tbody.appendChild(tr);
+  }
+}
+
+// wire events ONCE
+document.getElementById("refreshBtn")
+  .addEventListener("click", loadPurchases);
+
+document.querySelectorAll("input[name='mode']")
+  .forEach(r => r.addEventListener("change", loadPurchases));
+
+// initial load
+loadPurchases();
+</script>
+
+</body>
+</html>
