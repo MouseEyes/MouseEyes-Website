@@ -1,2 +1,5 @@
+/admin/*
+  X-Robots-Tag: noindex, nofollow
+
 /functions/admin/*
   X-Robots-Tag: noindex, nofollow
