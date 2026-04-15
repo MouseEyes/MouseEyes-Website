@@ -1,6 +1,12 @@
 import Stripe from "stripe";
+import { requireCfAccessJwt } from "../_lib/cfAccess.js";
 
 export async function onRequestGet({ env, request }) {
+  const auth = await requireCfAccessJwt(request, env);
+  if (!auth.ok) {
+    return new Response(auth.message, { status: auth.status });
+  }
+
   const url = new URL(request.url);
   const mode = (url.searchParams.get("mode") || "live").toLowerCase();
 

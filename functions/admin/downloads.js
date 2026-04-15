@@ -1,4 +1,15 @@
+import { requireCfAccessJwt } from "../_lib/cfAccess.js";
+
 export async function onRequestGet({ env, request }) {
+	
+  const auth = await requireCfAccessJwt(request, env);
+  if (!auth.ok) {
+    return new Response(auth.message, { status: auth.status });
+  }
+
+  // Optional: you can log who accessed it:
+  // console.log("Admin downloads accessed by:", auth.payload?.email);
+
   // Optional: allow ?limit=50 override, with safety bounds
   const url = new URL(request.url);
   const limitParam = parseInt(url.searchParams.get("limit") || "50", 10);
