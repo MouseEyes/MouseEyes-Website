@@ -1,1 +1,7 @@
+
 compatibility_date = "2026-04-07"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "mouseeyes_db"
+database_id = "cdf15e94-3ecc-41e6-9e36-6016ca3f5511"
