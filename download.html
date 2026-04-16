@@ -3,14 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MouseEyes — Download</title>
+  <title>Download MouseEyes for Windows 11 – Multi‑Monitor Cursor Tracking</title>
 
   <link rel="stylesheet" href="style.css" />
 
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
   <link rel="shortcut icon" href="favicon-32x32.png" />
-  <link rel="canonical" href="https://www.mouseeyes.com/download/" />
+  <link rel="canonical" href="https://www.mouseeyes.com/download" />
+  <meta name="description" content="Download MouseEyes, a lightweight Windows 11 utility that helps you instantly find your mouse cursor across single or multi‑monitor setups.">
   <style>
     .download-card {
       margin: 1.25rem 0;
@@ -89,18 +90,18 @@
       <h1 class="page-title">Download</h1>
     </div>
     <nav class="header-nav" aria-label="Primary">
-      <a href="index.html">Home</a>
+      <a href="/">Home</a>
       <strong>Download</strong>
-      <a href="pricing.html">Pricing</a>
-      <a href="support.html">Support</a>
-      <a href="privacy.html">Privacy</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/support">Support</a>
+      <a href="/privacy">Privacy</a>
     </nav>
   </header>
 
   <!-- Main Page Content -->
   <main>
 
-    <h2>Download MouseEyes for Windows 11</h2>
+    <h1>Download MouseEyes for Windows 11</h1>
 
     <p>
       MouseEyes is a lightweight Windows utility that makes your mouse pointer
@@ -120,6 +121,50 @@ software hasn’t been modified.</p>
 <p>To celebrate this milestone — and to thank early adopters who help us
 get this new signed release into wider circulation — we’re offering a
 <strong>free 3‑month MouseEyes license</strong> for a limited time.</p>
+
+
+    <!-- ✅ Gated Download Box -->
+    <section class="download-card">
+      <h3>Get your download link</h3>
+      <p><strong>Name is required.</strong> Email is optional.</p>
+
+      <form id="downloadGateForm" novalidate>
+
+        <div class="form-row">
+          <label for="name">Name *</label>
+          <input id="name" type="text" required />
+        </div>
+
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input id="email" type="email" />
+        </div>
+
+        <div class="form-row">
+          <label for="updates">Email updates?</label>
+          <input id="updates" type="checkbox" />
+        </div>
+
+        <div class="form-actions">
+          <button id="submitBtn" class="btn" type="submit">
+            Show download link
+          </button>
+        </div>
+
+        <div id="status" class="status hidden"></div>
+
+        <div id="downloadLinkWrap" class="hidden">
+          <a
+            id="downloadLink"
+            class="download-link"
+            href="https://github.com/MouseEyes/MouseEyes-Downloads/releases/download/v2.2.48/MouseEyesInstaller_2.2.48_x64.exe"
+            download
+          >
+            Download MouseEyes for Windows 11 (v2.2.48)
+          </a>
+        </div>
+      </form>
+    </section>
 <hr />
 <p><strong>🔐 What’s New in This Release</strong></p>
 <ul>
@@ -173,59 +218,12 @@ applications.</p>
 <p><strong>Thank you for supporting MouseEyes</strong></p>
 <p>Your early support helps us deliver a smoother, more trusted
 experience for everyone.</p>
-    <p>---- Prerelease Version ----</p>
-
-    <!-- ✅ Gated Download Box -->
-    <section class="download-card">
-      <h3>Get your download link</h3>
-      <p><strong>Name is required.</strong> Email is optional.</p>
-
-      <form id="downloadGateForm" novalidate>
-
-        <div class="form-row">
-          <label for="name">Name *</label>
-          <input id="name" type="text" required />
-        </div>
-
-        <div class="form-row">
-          <label for="email">Email</label>
-          <input id="email" type="email" />
-        </div>
-
-        <div class="form-row">
-          <label for="updates">Email updates?</label>
-          <input id="updates" type="checkbox" />
-        </div>
-
-        <div class="form-actions">
-          <button id="submitBtn" class="btn" type="submit">
-            Show download link
-          </button>
-        </div>
-
-        <div id="status" class="status hidden"></div>
-
-        <div id="downloadLinkWrap" class="hidden">
-          <a
-            id="downloadLink"
-            class="download-link"
-            href="https://github.com/MouseEyes/MouseEyes-Downloads/releases/download/v2.2.48/MouseEyesInstaller_2.2.48_x64.exe"
-            download
-          >
-            Download MouseEyes (v2.2.48)
-          </a>
-        </div>
-
-      </form>
-    </section>
-
-    <!-- ✅ RESTORED CONTENT BELOW -->
 
     <h3>System Requirements</h3>
     <ul>
-      <li><strong>Operating System:</strong> Windows 11</li>
-      <li><strong>Displays:</strong> Single or multiple monitors supported</li>
-      <li><strong>Internet:</strong> Not required for normal operation</li>
+      <li>Windows 11 (64‑bit)</li>
+      <li>Single or multiple monitors supported</li>
+      <li>Internet connection not required for normal operation</li>
     </ul>
 
     <h3>Installation Notes</h3>
