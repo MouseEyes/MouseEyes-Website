@@ -8,7 +8,7 @@
 
   <meta
     name="description"
-    content="Explore the built-in MouseEyes profiles: Two Eyes, Single Eye, Pointer, MouseMap, and CPU & Network — ready-to-use overlays that showcase multi-monitor cursor tracking, window recovery, and live system gauges."
+    content="Explore the built-in MouseEyes profiles: Two Eyes, Single Eye, Pointer, MouseMap, and CPU &amp; Network — ready-to-use overlays that showcase multi-monitor cursor tracking, window recovery, and live system gauges."
   />
 
   <link rel="stylesheet" href="style.css" />
@@ -74,12 +74,18 @@
     .profile-media {
       background: #f6f6f6;
       border-bottom: 1px solid #e6e6e6;
+
+      /* Reserve space immediately (matches 500x260) */
+      aspect-ratio: 500 / 260;
+      overflow: hidden;
     }
+
     .profile-media img {
       width: 100%;
       height: auto;
       display: block;
     }
+
     .profile-body {
       padding: 14px 16px 16px;
     }
@@ -216,15 +222,23 @@
 
     <h2>Default Profiles Included</h2>
     <p class="fineprint">
-      Below are the built‑in profiles that ship with MouseEyes. These samples show the MouseEyes profiles placed on the Windows 11 Taskbar as they track the mouse on the desktop.</p>
+      Below are the built‑in profiles that ship with MouseEyes. These samples show the MouseEyes profiles placed on the Windows 11 Taskbar as they track the mouse on the desktop.
+    </p>
 
     <div class="profiles-grid">
 
       <!-- Two Eyes -->
       <article class="profile-card" id="two-eyes">
         <div class="profile-media">
-          <!-- Replace this with your preferred Two Eyes GIF/screenshot -->
-          <img src="/images/ME5.gif" alt="MouseEyes Two Eyes profile preview (animation or screenshot)" />
+          <img
+            src="/images/me.gif"
+            alt="MouseEyes Two Eyes profile preview (animation)"
+            width="500"
+            height="260"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
         </div>
         <div class="profile-body">
           <h2>Two Eyes <span aria-label="default profile">(Default)</span></h2>
@@ -251,8 +265,14 @@
       <!-- MouseMap -->
       <article class="profile-card" id="mousemap">
         <div class="profile-media">
-          <!-- Replace / update this media as desired -->
-          <img src="/images/mousemap.gif" alt="MouseEyes MouseMap profile preview (animation)" />
+          <img
+            src="/images/mousemap.gif"
+            alt="MouseEyes MouseMap profile preview (animation)"
+            width="500"
+            height="260"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
         <div class="profile-body">
           <h2>MouseMap<span aria-hidden="true">™</span></h2>
@@ -281,8 +301,14 @@
       <!-- CPU & Network -->
       <article class="profile-card" id="cpu-network">
         <div class="profile-media">
-          <!-- Replace this with your preferred CPU/Network GIF/screenshot -->
-          <img src="/images/cpu_network.gif" alt="MouseEyes CPU & Network profile preview (animation or screenshot)" />
+          <img
+            src="/images/cpu_network.gif"
+            alt="MouseEyes CPU &amp; Network profile preview (animation)"
+            width="500"
+            height="260"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
         <div class="profile-body">
           <h2>CPU &amp; Network</h2>
@@ -310,8 +336,14 @@
       <!-- Pointer -->
       <article class="profile-card" id="pointer">
         <div class="profile-media">
-          <!-- Replace this with your preferred Pointer GIF/screenshot -->
-          <img src="/images/pointer.gif" alt="MouseEyes Pointer profile preview (animation or screenshot)" />
+          <img
+            src="/images/pointer.gif"
+            alt="MouseEyes Pointer profile preview (animation)"
+            width="500"
+            height="260"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
         <div class="profile-body">
           <h2>Pointer</h2>
@@ -334,12 +366,18 @@
           </ul>
         </div>
       </article>
-	  
+
       <!-- Single Eye -->
       <article class="profile-card" id="single-eye">
         <div class="profile-media">
-          <!-- Replace this with your preferred Single Eye GIF/screenshot -->
-          <img src="/images/single-eye.gif" alt="MouseEyes Single Eye profile preview (image)" />
+          <img
+            src="/images/single-eye.gif"
+            alt="MouseEyes Single Eye profile preview (animation)"
+            width="500"
+            height="260"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
         <div class="profile-body">
           <h2>Single Eye</h2>
@@ -361,6 +399,7 @@
           </ul>
         </div>
       </article>
+
     </div>
 
     <hr class="section-divider" />
