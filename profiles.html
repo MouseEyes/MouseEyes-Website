@@ -1,0 +1,374 @@
+<!-- profiles.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MouseEyes — Built‑In Profiles</title>
+
+  <meta
+    name="description"
+    content="Explore the built-in MouseEyes profiles: Two Eyes, Single Eye, Pointer, MouseMap, and CPU & Network — ready-to-use overlays that showcase multi-monitor cursor tracking, window recovery, and live system gauges."
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="shortcut icon" href="/favicon-32x32.png" />
+  <link rel="canonical" href="https://www.mouseeyes.com/profiles" />
+
+  <!-- Page-local styling (keeps your global style.css untouched) -->
+  <style>
+    .lede {
+      font-size: 1.05rem;
+      margin-top: 0;
+      max-width: 72ch;
+    }
+
+    .callouts {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin: 18px 0 26px;
+    }
+    @media (min-width: 740px) {
+      .callouts { grid-template-columns: 1fr 1fr; }
+    }
+
+    .callout {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 14px 16px;
+      background: #fff;
+    }
+    .callout h3 {
+      margin: 0 0 6px;
+      font-size: 1.05rem;
+    }
+    .callout p {
+      margin: 0;
+      color: #333;
+    }
+
+    .profiles-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin: 16px 0 26px;
+    }
+    @media (min-width: 860px) {
+      .profiles-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .profile-card {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .profile-media {
+      background: #f6f6f6;
+      border-bottom: 1px solid #e6e6e6;
+    }
+    .profile-media img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .profile-body {
+      padding: 14px 16px 16px;
+    }
+    .profile-body h2 {
+      margin: 0 0 6px;
+      font-size: 1.35rem;
+    }
+    .profile-meta {
+      margin: 0 0 10px;
+      color: #444;
+    }
+    .profile-meta strong {
+      font-weight: 700;
+    }
+
+    .profile-body ul {
+      margin: 8px 0 0;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .pill-row li {
+      border: 1px solid #ddd;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 0.9rem;
+      background: #fff;
+    }
+
+    .jump-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .jump-links a {
+      text-decoration: none;
+      border-bottom: 1px dotted #000;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 12px;
+      margin-top: 18px;
+      align-items: center;
+    }
+    .cta-row a {
+      display: inline-block;
+      padding: 10px 14px;
+      border: 2px solid #000;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      color: #000;
+      background: #fff;
+    }
+    .cta-row a:hover {
+      background: #000;
+      color: #fff;
+    }
+
+    .fineprint {
+      color: #444;
+      font-size: 0.95rem;
+      max-width: 80ch;
+    }
+
+    /* Optional: subtle section separators for long-scroll readability */
+    .section-divider {
+      border: none;
+      border-top: 1px solid #000;
+      opacity: 0.12;
+      margin: 22px 0;
+    }
+  </style>
+</head>
+
+<body class="page-profiles">
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-left">
+      <img
+        src="/images/mouseeyes-logo.png"
+        alt="MouseEyes logo"
+        class="site-logo"
+      />
+      <h1 class="page-title">Built‑In Profiles</h1>
+    </div>
+
+    <nav class="header-nav" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/download">Download</a>
+      <strong>Profiles</strong>
+      <a href="/pricing">Pricing</a>
+      <a href="/support">Support</a>
+      <a href="/privacy">Privacy</a>
+    </nav>
+  </header>
+
+  <!-- Main Page Content -->
+  <main>
+    <p class="lede">
+      MouseEyes comes with several <strong>built‑in profiles</strong> that are always available — even before you create any custom profiles.
+      They’re hardcoded into the app, so they can’t be accidentally deleted or corrupted, and they’re designed to quickly demonstrate what MouseEyes can do.
+    </p>
+
+    <div class="callouts" aria-label="Highlights">
+      <section class="callout">
+        <h3>Instantly switch profiles</h3>
+        <p>
+          Right‑click a MouseEyes window and choose <strong>Profiles</strong> to apply a different profile immediately.
+          Switching updates the active window’s layout and controls on the spot.
+        </p>
+      </section>
+
+      <section class="callout">
+        <h3>Custom profiles</h3>
+        <p>
+          You can create your own, custom profiles for use with MouseEyes!
+        </p>
+      </section>
+    </div>
+
+    <hr class="section-divider" />
+
+    <h2>Default Profiles Included</h2>
+    <p class="fineprint">
+      Below are the built‑in profiles that ship with MouseEyes. </p>
+
+    <div class="profiles-grid">
+
+      <!-- Two Eyes -->
+      <article class="profile-card" id="two-eyes">
+        <div class="profile-media">
+          <!-- Replace this with your preferred Two Eyes GIF/screenshot -->
+          <img src="/images/ME5.gif" alt="MouseEyes Two Eyes profile preview (animation or screenshot)" />
+        </div>
+        <div class="profile-body">
+          <h2>Two Eyes <span aria-label="default profile">(Default)</span></h2>
+          <p class="profile-meta"><strong>Purpose:</strong> The standard, classic MouseEyes layout.</p>
+          <p>
+            A pair of animated eyes positioned side‑by‑side. Each eye independently tracks your mouse pointer across all connected monitors.
+            This is the default layout shown when MouseEyes first launches.
+          </p>
+
+          <ul class="pill-row" aria-label="Best for Two Eyes">
+            <li>Everyday use</li>
+            <li>Maximum cursor visibility</li>
+            <li>New users</li>
+          </ul>
+
+          <ul aria-label="Two Eyes features">
+            <li>Symmetrical layout</li>
+            <li>Smooth dual‑eye tracking</li>
+            <li>Balanced pupil movement for accuracy</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- MouseMap -->
+      <article class="profile-card" id="mousemap">
+        <div class="profile-media">
+          <!-- Replace / update this media as desired -->
+          <img src="/images/mousemap.gif" alt="MouseEyes MouseMap profile preview (animation)" />
+        </div>
+        <div class="profile-body">
+          <h2>MouseMap<span aria-hidden="true">™</span></h2>
+          <p class="profile-meta"><strong>Purpose:</strong> Monitor diagnostics and cursor visualization.</p>
+          <p>
+            Displays a miniature map of all monitors in your system and shows your mouse position in real time.
+            MouseMap can also highlight off‑screen windows with red edges — and gives you quick, interactive recovery tools.
+          </p>
+
+          <ul class="pill-row" aria-label="Best for MouseMap">
+            <li>2+ monitors</li>
+            <li>Fast cursor location</li>
+            <li>Window recovery</li>
+          </ul>
+
+          <ul aria-label="MouseMap features">
+            <li>Real‑time monitor layout</li>
+            <li>Real‑time mouse location visualization</li>
+            <li>Highlights off‑screen windows</li>
+            <li>Double‑click a monitor to teleport the mouse cursor</li>
+            <li>Double‑click a red edge to relocate off‑screen windows back into view</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- CPU & Network -->
+      <article class="profile-card" id="cpu-network">
+        <div class="profile-media">
+          <!-- Replace this with your preferred CPU/Network GIF/screenshot -->
+          <img src="/images/CpuNetwork.gif" alt="MouseEyes CPU & Network profile preview (animation or screenshot)" />
+        </div>
+        <div class="profile-body">
+          <h2>CPU &amp; Network</h2>
+          <p class="profile-meta"><strong>Purpose:</strong> Live system resource gauge (CPU + network throughput).</p>
+          <p>
+            A real‑time dashboard showing overall CPU utilization (0–100%) and aggregated network throughput (KB/s).
+            It updates on a timer and uses smoothing to reduce flicker for a stable always‑available readout.
+          </p>
+
+          <ul class="pill-row" aria-label="Best for CPU and Network">
+            <li>Quick system monitoring</li>
+            <li>Heavy multitasking</li>
+            <li>Performance checks</li>
+          </ul>
+
+          <ul aria-label="CPU and Network features">
+            <li>Live CPU usage percentage</li>
+            <li>Live network throughput (KB/s)</li>
+            <li>Smoothed readings for stability</li>
+            <li>Double‑click toggles bar graph visibility for compact vs detailed view</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Pointer -->
+      <article class="profile-card" id="pointer">
+        <div class="profile-media">
+          <!-- Replace this with your preferred Pointer GIF/screenshot -->
+          <img src="/images/pointer.gif" alt="MouseEyes Pointer profile preview (animation or screenshot)" />
+        </div>
+        <div class="profile-body">
+          <h2>Pointer</h2>
+          <p class="profile-meta"><strong>Purpose:</strong> Direction‑to‑cursor tracking without cartoon eyes.</p>
+          <p>
+            Instead of eyes, this profile shows a pointer control that rotates to indicate the direction of the mouse position.
+            It acts like a visual compass — great when you want directional tracking in a cleaner style.
+          </p>
+
+          <ul class="pill-row" aria-label="Best for Pointer">
+            <li>Less whimsical visuals</li>
+            <li>Multi‑monitor cursor jumps</li>
+            <li>Professional environments</li>
+          </ul>
+
+          <ul aria-label="Pointer features">
+            <li>Rotational tracking rather than eyeball tracking</li>
+            <li>Clean, minimal design</li>
+            <li>Easy to locate at a glance</li>
+          </ul>
+        </div>
+      </article>
+	  
+      <!-- Single Eye -->
+      <article class="profile-card" id="single-eye">
+        <div class="profile-media">
+          <!-- Replace this with your preferred Single Eye GIF/screenshot -->
+          <img src="/images/single-eye.gif" alt="MouseEyes Single Eye profile preview (image)" />
+        </div>
+        <div class="profile-body">
+          <h2>Single Eye</h2>
+          <p class="profile-meta"><strong>Purpose:</strong> Minimal, space‑saving tracking.</p>
+          <p>
+            A single, large animated eye centered on a compact form. You still get the same smooth tracking behavior,
+            but with a smaller on‑screen footprint.
+          </p>
+
+          <ul class="pill-row" aria-label="Best for Single Eye">
+            <li>Minimalist setups</li>
+            <li>Limited screen space</li>
+            <li>Single focus point</li>
+          </ul>
+
+          <ul aria-label="Single Eye features">
+            <li>Highly visible, oversized pupil</li>
+            <li>Smooth tracking (same algorithm as the two‑eye profile)</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+
+    <hr class="section-divider" />
+
+    <div class="cta-row">
+      <a href="/download">Download MouseEyes</a>
+      <a href="/support">Need help?</a>
+    </div>
+  </main>
+</body>
+</html>
