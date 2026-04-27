@@ -1,8 +1,7 @@
 import { requireCfAccessJwt } from "../_lib/cfAccess.js";
 
-
 export async function onRequestGet({ env, request }) {
-  try {
+
     const auth = await requireCfAccessJwt(request, env);
     if (!auth.ok) {
       return new Response(auth.message, { status: auth.status });
@@ -41,14 +40,6 @@ export async function onRequestGet({ env, request }) {
         "Cache-Control": "no-store"
       }
     });
-
-  } catch (err) {
-    console.error("Admin downloads exception:", err);
-    return new Response(
-      `Admin downloads exception: ${err?.message || err}`,
-      { status: 500 }
-    );
-  }
 }
 
 
