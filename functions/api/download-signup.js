@@ -32,7 +32,7 @@ export async function onRequestPost(context) {
       .prepare(
         `INSERT INTO download_signups
          (name, email, updates, file_name, user_agent, ip)
-         VALUES (?, ?, ?, ?, ?)`
+         VALUES (?, ?, ?, ?, ?, ?)`
       )
       .bind(
         name,
