@@ -24,7 +24,13 @@ export async function onRequestGet({ env, request }) {
 
   // 2) Last N rows (FULL rows)
   const { results } = await env.DB.prepare(`
-    SELECT id, name, email, updates, created_at
+    SELECT 	
+      id,
+      name,
+      email,
+      updates,
+      COALESCE(file_name, '') AS file_name,
+      created_at
     FROM download_signups
     ORDER BY created_at DESC
     LIMIT ?

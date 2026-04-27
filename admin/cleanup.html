@@ -72,7 +72,7 @@
 	<table id="downloadsTable"
 		   style="margin-top:1rem; width:100%; border-collapse:collapse;"
 		   border="1"
-		   cellpadding="6">
+		   cellpadding="7">
 	  <thead>
 		<tr style="background:#f0f0f0;">
 		  <th style="width:42px; text-align:center;">
@@ -82,12 +82,13 @@
 		  <th>Name</th>
 		  <th>Email</th>
 		  <th>Updates</th>
+		  <th>File</th>
 		  <th style="width:70px; text-align:right;">ID</th>
 		</tr>
 	  </thead>
 	  <tbody>
 		<tr>
-		  <td colspan="6">Loading…</td>
+		  <td colspan="7">Loading…</td>
 		</tr>
 	  </tbody>
 	</table>
@@ -162,13 +163,13 @@ function toggleHeaderSelect(state) {
 
 async function loadDownloads() {
   const tbody = document.querySelector("#downloadsTable tbody");
-  tbody.innerHTML = "<tr><td colspan='6'>Loading…</td></tr>";
+  tbody.innerHTML = "<tr><td colspan='7'>Loading…</td></tr>";
 
   let response;
   try {
     response = await fetch("/admin/downloads?limit=50");
   } catch {
-    tbody.innerHTML = "<tr><td colspan='6'>Failed to fetch data</td></tr>";
+    tbody.innerHTML = "<tr><td colspan='7'>Failed to fetch data</td></tr>";
     return;
   }
 
@@ -178,7 +179,7 @@ async function loadDownloads() {
   tbody.innerHTML = "";
 
   if (rows.length === 0) {
-    tbody.innerHTML = "<tr><td colspan='6'>No records found</td></tr>";
+    tbody.innerHTML = "<tr><td colspan='7'>No records found</td></tr>";
     updateSelectedCount();
     return;
   }
@@ -193,6 +194,7 @@ async function loadDownloads() {
       <td>${escapeHtml(row.name)}</td>
       <td>${escapeHtml(row.email || "")}</td>
       <td style="text-align:center;">${row.updates ? "✔" : ""}</td>
+      <td>${escapeHtml(row.file_name || "(unknown)")}</td>
       <td style="text-align:right;">${row.id}</td>
     `;
     tbody.appendChild(tr);
