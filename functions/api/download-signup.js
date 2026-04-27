@@ -18,6 +18,7 @@ export async function onRequestPost(context) {
   const name = (body?.name ?? '').toString().trim();
   const email = (body?.email ?? '').toString().trim();
   const updates = body?.updates ? 1 : 0;
+  const fileName = (body?.file_name ?? '').toString().trim()
 
   if (!name) {
     return Response.json({ error: 'Name is required' }, { status: 400 });
@@ -30,13 +31,14 @@ export async function onRequestPost(context) {
     await env.DB
       .prepare(
         `INSERT INTO download_signups
-         (name, email, updates, user_agent, ip)
+         (name, email, updates, file_name, user_agent, ip)
          VALUES (?, ?, ?, ?, ?)`
       )
       .bind(
         name,
         email || null,
         updates,
+		fileName,
         userAgent || null,
         ip || null
       )

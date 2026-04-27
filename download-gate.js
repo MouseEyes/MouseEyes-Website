@@ -8,8 +8,10 @@
   const emailEl = $('email');
   const updatesEl = $('updates');
   const statusEl = $('status');
-  const linkWrap = $('downloadLinkWrap');
-  const submitBtn = $('submitBtn');
+
+
+  const link = document.getElementById("downloadLink");
+  const fileName = link?.dataset?.file || null;
 
   function showStatus(title, msg) {
     statusEl.classList.remove('hidden');
@@ -42,7 +44,10 @@
     const nameVal = (nameEl.value || '').trim();
     const emailVal = (emailEl.value || '').trim();
     const updatesVal = !!updatesEl.checked;
-
+  
+    const linkWrap = $('downloadLinkWrap');
+    const submitBtn = $('submitBtn');
+	
     if (!nameVal) {
       linkWrap.classList.add('hidden');
       showStatus('Name required', 'Please enter your name to continue.');
@@ -67,7 +72,8 @@
       await submitToServer({
         name: nameVal,
         email: emailVal || null,
-        updates: updatesVal
+        updates: updatesVal,
+        file_name: fileName
       });
 
       try {
