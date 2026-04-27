@@ -165,16 +165,27 @@ async function loadDownloads() {
   const tbody = document.querySelector("#downloadsTable tbody");
   tbody.innerHTML = "<tr><td colspan='7'>Loading…</td></tr>";
 
-  let response;
-  try {
-    response = await fetch("/admin/downloads?limit=50");
-  } catch {
-    tbody.innerHTML = "<tr><td colspan='7'>Failed to fetch data</td></tr>";
-    return;
-  }
 
-  const data = await response.json();
-  const rows = data.rows || [];
+	let response;
+	try {
+	  response = await fetch("/admin/downloads?limit=50");
+	  if (!response.ok) {
+		throw new Error(`HTTP ${response.status}`);
+	  }
+	} catch (err) {
+	  tbody.innerHTML = "<tr><td colspan='7'>Failed to fetch data</td></tr>";
+	  return;
+	}
+
+	let data;
+	try {
+	  data = await response.json();
+	} catch (err) {
+	  tbody.innerHTML = "<tr><td colspan='7'>Invalid server response</td></tr>";
+	  return;
+	}
+
+	const rows = data.rows || [];
 
   tbody.innerHTML = "";
 
