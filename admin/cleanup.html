@@ -168,7 +168,9 @@ async function loadDownloads() {
 
 	let response;
 	try {
-	  response = await fetch("/admin/downloads?limit=50");
+	  response = await fetch("/admin/downloads?limit=50", {
+        credentials: "include"
+      });
 	  if (!response.ok) {
 		throw new Error(`HTTP ${response.status}`);
 	  }
